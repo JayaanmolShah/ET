@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bits and Bytes</title>
     <style>
+        /* #text{
+        position: absolute;
+        font-size: 5em;
+        color: rgb(16, 16, 62);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+    } */
+
         .all-login{
       display: flex;
       align-items: center;
@@ -33,19 +40,9 @@
       font-size: 18px;
     }
     
-    /* .login:hover img{
-      scale:  1.1;
-    } */
-    
     .login:hover {
       box-shadow: 5px 15px 25px #b1c3db;
     }
-    
-    /* .login img {
-      height: 200px;
-      margin: 1rem;
-      transition: all 0.3s;
-    } */
     
     .login a:link, .login a:visited{
       color: #ececec;
@@ -67,24 +64,9 @@
 <body>
     <div class="login">
         <div class="login-info">
-            <h4 class="login-title">VR 
+            <h4 class="login-title">view score board
             </h4>
-            <a class="login-btn" href="{% url 'vr_home' %}">CLICK HERE</a>
-        </div>
-    </div>
-    
-    <div class="login">
-        <div class="login-info">
-            <h4 class="login-title">BGMI 
-            </h4>
-            <a class="login-btn" href="{% url 'bgmi_home' %}">CLICK HERE</a>
-        </div>
-    </div>
-    <div class="login">
-        <div class="login-info">
-            <h4 class="login-title">TREASURE HUNT 
-            </h4>
-            <a class="login-btn" href="{% url 'th_home' %}">CLICK HERE</a>
+            <a class="login-btn" href="{% url 'scoreboard' %}">CLICK HERE</a>
         </div>
     </div>
 </body>

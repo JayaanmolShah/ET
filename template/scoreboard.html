@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR Game Scoreboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .leaderboard {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+        .leader {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 30%;
+        }
+        .leader h2 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        .leader p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+        .leader:first-child {
+            background-color: #ffd700;
+        }
+        .leader:nth-child(2) {
+            background-color: #c0c0c0;
+        }
+        .leader:nth-child(3) {
+            background-color: #cd7f32;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>VR Game Scoreboard</h1>
+
+    <!-- Top 3 Leaders -->
+    <div class="leaderboard">
+        {% for player in players|slice:":3" %}
+        <div class="leader">
+            <h2>{{ forloop.counter }}. {{ player.Name }}</h2>
+            <p>Score: {{ player.Score }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Remaining Players in a Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for player in players|slice:"3:" %}
+            <tr>
+                <td>{{ forloop.counter|add:3 }}</td>
+                <td>{{ player.Name }}</td>
+                <td>{{ player.Score }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
