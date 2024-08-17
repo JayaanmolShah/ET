@@ -10,5 +10,7 @@ class vr_player(models.Model):
     Phone=models.IntegerField(null=True)
     DOB=models.DateField(null=True)
     Score=models.IntegerField(null=True)
+    Date = models.DateField(auto_now=True)
+    Time = models.TimeField(auto_now=True)
     def __str__(self):
         return f"{self.Name}"
