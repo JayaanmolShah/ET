@@ -10,5 +10,6 @@ urlpatterns = [
     path("vr_game1",views.vr_game1,name='vr_game1'),
     path("vr_game2",views.vr_game2,name='vr_game2'),
     path("vr_game3",views.vr_game3,name='vr_game3'),
+    path("bgmi_reg",views.bgmi_reg,name='bgmi_reg'),
 
 ]

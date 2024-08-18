@@ -24,6 +24,9 @@ def vr_game2(request):
 def vr_game3(request):
     return render(request,'vr_game3.html')
 
+def bgmi_reg(request):
+    return render(request,'bgmi_reg.html')
+
 def scoreboard(request):
     players = vr_player.objects.all().order_by('-Score')
     return render(request,'scoreboard.html',{'players': players})
