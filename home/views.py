@@ -1,6 +1,8 @@
 from django.shortcuts import render,HttpResponse
-from home.models import vr_player
+from django.core.files.base import ContentFile
+from home.models import Players
 import datetime
+
 
 # Create your views here.
 def index(request):
@@ -28,5 +30,6 @@ def bgmi_reg(request):
     return render(request,'bgmi_reg.html')
 
 def scoreboard(request):
-    players = vr_player.objects.all().order_by('-Score')
+    players = Players.objects.all().order_by('-Score')
     return render(request,'scoreboard.html',{'players': players})
+

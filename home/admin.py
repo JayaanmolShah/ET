@@ -1,5 +1,5 @@
 from django.contrib import admin
-from home.models import vr_player
+from home.models import Players
 # Register your models here.
 
-admin.site.register(vr_player)
+admin.site.register(Players)
