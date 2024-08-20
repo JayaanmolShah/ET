@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +9,12 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
-            background-color: #f4f4f4;
+            background-image: url('{% static "images/score_bg.jpg" %}'); /* Set background image */
+            background-size: cover; /* Ensure the image covers the entire background */
+            background-repeat: no-repeat; /* Prevent the background image from repeating */
+            background-position: center center; /* Center the background image */
+            background-attachment: fixed; /* Ensure the background stays fixed on scroll */
+            color: #333;
         }
         .leaderboard {
             display: flex;
@@ -16,7 +22,8 @@
             margin-bottom: 30px;
         }
         .leader {
-            background-color: #fff;
+            background-color: rgba(0, 0, 0, 0.6); /* Same translucent color for all rankers */
+            color: white; /* Ensure text is readable */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -31,38 +38,29 @@
             font-size: 18px;
             margin: 5px 0;
         }
-        .leader:first-child {
-            background-color: #ffd700;
-        }
-        .leader:nth-child(2) {
-            background-color: #c0c0c0;
-        }
-        .leader:nth-child(3) {
-            background-color: #cd7f32;
-        }
         table {
             width: 100%;
             border-collapse: collapse;
-            background-color: #fff;
+            background-color: rgba(0, 0, 0, 0.6); /* More translucent color */
+            color: white; /* Ensure text is readable */
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
         table, th, td {
-            border: 1px solid #ddd;
+            border: 1px solid rgba(255, 255, 255, 0.3); /* Light border to match translucent background */
         }
         th, td {
             padding: 12px;
             text-align: left;
         }
         th {
-            background-color: #f2f2f2;
+            background-color: rgba(255, 255, 255, 0.2); /* Slightly translucent header */
         }
     </style>
 </head>
 <body>
-
-    <h1>VR Game Scoreboard</h1>
+    
 
     <!-- Top 3 Leaders -->
     <div class="leaderboard">
