@@ -79,14 +79,17 @@
         <thead>
             <tr>
                 <th>Rank</th>
+                <th>Avatar</th>
                 <th>Name</th>
                 <th>Score</th>
+                <th>Time</th>
             </tr>
         </thead>
         <tbody>
             {% for player in players|slice:"3:" %}
             <tr>
                 <td>{{ forloop.counter|add:3 }}</td>
+                <td><img src="{{ player.Avatar.url }}" alt="{{ player.Name }}" width="50" height="50"></td>
                 <td>{{ player.Name }}</td>
                 <td>{{ player.Score }}</td>
                 <td>{{ player.Time }}</td>
