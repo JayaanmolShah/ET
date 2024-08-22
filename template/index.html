@@ -1,91 +1,188 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bits and Bytes</title>
+    <title>Cards with Hover Video</title>
     <style>
-        .all-login{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    
-    .login{
-      overflow: hidden;
-      background: #afd1f3;
-      color: #162f61;
-      text-align: center;
-      width: 350px;
-      height: 200px;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      border-radius: 1.2rem;
-      margin: 2.5rem;
-        margin-top: 30px;
-    }
-    
-    .login .login-title, .login .login-price{
-      font-size: 18px;
-    }
-    
-    /* .login:hover img{
-      scale:  1.1;
-    } */
-    
-    .login:hover {
-      box-shadow: 5px 15px 25px #b1c3db;
-    }
-    
-    /* .login img {
-      height: 200px;
-      margin: 1rem;
-      transition: all 0.3s;
-    } */
-    
-    .login a:link, .login a:visited{
-      color: #ececec;
-      display: inline-block;
-      text-decoration: none;
-      background-color: #062b48;
-      padding: 1.2rem 3rem;
-      border-radius: 1rem;
-      margin-top: 1rem;
-      font-size: 15px;
-      transition: all 0.2s;
-    }
-    
-    .login a:hover{
-      transform: scale(1.1);
-    }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        .video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Send the video behind other content */
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 0;
+            background-color: #000;
+            z-index: 1000;
+        }
+        .logo-container {
+            margin-bottom: 10px; /* Space between logo and menu */
+        }
+        .logo-container img {
+            height: 60px; /* Adjust the height as needed */
+        }
+        .menu {
+            display: flex;
+            gap: 20px;
+            
+           
+        }
+        .menu a {
+            
+            position: relative;
+            font-size: 1.1em;
+            color: #666;
+            text-decoration: none;
+            padding: 6px 20px;
+            transition: 100ms ease-in-out;
+        }
+        .menu a:hover {
+            color: #f6f0f0;
+        }
+        .menu a span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            border-bottom: 2px solid #880808;
+            border-radius: 15px;
+            transform: scale(0) translateY(50px);
+            opacity: 0;
+            transition: 0.5s;
+        }
+        .menu a:hover span {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+        .card-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 150px auto 50px; /* Increased margin-top for space below navbar */
+            max-width: 1200px;
+        }
+        .card {
+            position: relative;
+            width: 300px;
+            height: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; /* Ensure the button stays at the bottom */
+        }
+        .card img, .card video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .card video {
+            opacity: 0;
+            z-index: 1; /* Make sure the video is on top of the image */
+        }
+        .card:hover img {
+            opacity: 0;
+        }
+        .card:hover video {
+            opacity: 1;
+        }
+        .card a {
+            text-decoration: none;
+            position: relative;
+            z-index: 2; /* Ensure the button is on top of the video */
+            margin: 10px auto; /* Center the button horizontally */
+            padding: 10px 20px;
+            background-color: #880808;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .card a:hover {
+            background-color: #DC143C;
+        }
     </style>
 </head>
 <body>
-    <div class="login">
-        <div class="login-info">
-            <h4 class="login-title">VR 
-            </h4>
-            <a class="login-btn" href="{% url 'vr_home' %}">CLICK HERE</a>
+    <nav>
+        <div class="logo-container">
+            <img src="{% static 'images/aissms_bg.png' %}" alt="Logo">
+        </div>
+        <div class="menu">
+            <a href="/">Home<span></span></a>
+            <a href="/">About<span></span></a>
+            <a href="/">Scoreboard<span></span></a>
+            <a href="/">Rules<span></span></a>
+        </div>
+    </nav>
+    <video class="video-bg" autoplay muted loop>
+        <source src="{% static 'videos/black_bg.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="card-container">
+        <div class="card" onmouseover="playVideo(this)" onmouseout="pauseVideo(this)">
+            <img src="{% static 'images/vr.jpeg' %}" alt="Image 1">
+            <video loop muted>
+                <source src="{% static 'videos/vr.mp4' %}" type="video/mp4">
+            </video>
+            <a href="{% url 'vr_home' %}">CLICK HERE</a>
+        </div>
+        <div class="card" onmouseover="playVideo(this)" onmouseout="pauseVideo(this)">
+            <img src="{% static 'images/bgmi.jpg' %}" alt="Image 2">
+            <video loop muted>
+                <source src="{% static 'videos/bgmi.mp4' %}" type="video/mp4">
+            </video>
+            <a href="{% url 'bgmi_home' %}">CLICK HERE</a>
+        </div>
+        <div class="card" onmouseover="playVideo(this)" onmouseout="pauseVideo(this)">
+            <img src="{% static 'images/thunt.png' %}" alt="Image 3">
+            <video loop muted>
+                <source src="{% static 'videos/th.mp4' %}" type="video/mp4">
+            </video>
+            <a href="{% url 'th_home' %}">CLICK HERE</a>
         </div>
     </div>
-    
-    <div class="login">
-        <div class="login-info">
-            <h4 class="login-title">BGMI 
-            </h4>
-            <a class="login-btn" href="{% url 'bgmi_home' %}">CLICK HERE</a>
-        </div>
-    </div>
-    <div class="login">
-        <div class="login-info">
-            <h4 class="login-title">TREASURE HUNT 
-            </h4>
-            <a class="login-btn" href="{% url 'th_home' %}">CLICK HERE</a>
-        </div>
-    </div>
+
+    <script>
+        function playVideo(card) {
+            var video = card.querySelector('video');
+            video.play();
+        }
+
+        function pauseVideo(card) {
+            var video = card.querySelector('video');
+            video.pause();
+        }
+    </script>
 </body>
 </html>
