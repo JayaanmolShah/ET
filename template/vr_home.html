@@ -61,30 +61,54 @@
     }
     </style>
 </head>
+<!-- 1) Space Pirate trainer Dx
+2) Pistol whip 
+3)Zombieland: Headshot Fever
+4)Epic roller coasters 
+5) Void racer: Extreme 
+6) Ultimechs -->
 <body>
     <div><h2 id="text">choose an option</h2></div>
     <div class="login">
         <div class="login-info">
-            <h4 class="login-title">BEAT SABER
-            </h4>
-            <a class="login-btn" href="{% url 'vr_game1' %}">CLICK HERE</a>
+            <h4 class="login-title">Space Pirate trainer Dx</h4>
+            <a class="login-btn" href="{% url 'scoreboard' 'pirate' %}">CLICK HERE</a>
         </div>
     </div>
     
     <div class="login">
         <div class="login-info">
-            <h4 class="login-title">FRUIT NINJA
-            </h4>
-            <a class="login-btn" href="{% url 'vr_game2' %}">CLICK HERE</a>
+            <h4 class="login-title">Pistol whip </h4>
+            <a class="login-btn" href="{% url 'scoreboard' 'pistol' %}">CLICK HERE</a>
         </div>
     </div>
 
     <div class="login">
         <div class="login-info">
-            <h4 class="login-title">PIRATE
-            </h4>
-            <a class="login-btn" href="{% url 'vr_game3' %}">CLICK HERE</a>
+            <h4 class="login-title">Zombieland: Headshot Fever</h4>
+            <a class="login-btn" href="{% url 'scoreboard' 'zombie' %}">CLICK HERE</a>
         </div>
     </div>
+    <div class="login">
+      <div class="login-info">
+          <h4 class="login-title">Epic roller coasters
+          </h4>
+          <a class="login-btn" href="{% url 'scoreboard' 'roller' %}">CLICK HERE</a>
+      </div>
+  </div>
+  <div class="login">
+    <div class="login-info">
+        <h4 class="login-title">Void racer: Extreme 
+        </h4>
+        <a class="login-btn" href="{% url 'scoreboard' 'racer' %}">CLICK HERE</a>
+    </div>
+</div>
+<div class="login">
+  <div class="login-info">
+      <h4 class="login-title">Ultimechs
+      </h4>
+      <a class="login-btn" href="{% url 'scoreboard' 'ultimechs' %}">CLICK HERE</a>
+  </div>
+</div>
 </body>
 </html>
