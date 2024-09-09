@@ -2,7 +2,7 @@ import pandas as pd
 import requests
 from django.core.management.base import BaseCommand
 from django.core.files.base import ContentFile
-from home.models import Players
+from home.models import vr_zombie_Players,vr_ultimechs_Players,vr_pirate_Players,vr_pistol_Players,vr_racer_Players,vr_roller_Players
 import re
 class Command(BaseCommand):
     help = 'Import data from an Excel file to the database'
@@ -27,7 +27,7 @@ class Command(BaseCommand):
             avatar_file = self.generate_robohash_avatar(row['Name'])
             if avatar_file:
                 print(avatar_file)
-                player=Players(
+                player=vr_zombie_Players(
                     Name=row['Name'],
                     Roll_number=row['Roll_number'],
                     Branch=row['Branch'],
