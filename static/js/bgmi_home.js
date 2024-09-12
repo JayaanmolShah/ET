@@ -106,6 +106,18 @@
 //   }
 // });
 
+const imgSlider = document.querySelector(".img-slider");
+const imgFruits = document.querySelectorAll(".img-item.fruit");
+const infoSlider = document.querySelector(".info-slider");
+const infoItems = document.querySelectorAll(".info-item");
+const bgs = document.querySelectorAll(".bg");
+const carousel = document.querySelector(".carousel");
+
+const nextBtn = document.querySelector(".next-btn");
+const prevBtn = document.querySelector(".prev-btn");
+let currentSlide = 0;
+let index = 0;
+const totalSlides = imgFruits.length;
 
 
 
@@ -129,20 +141,6 @@ prevBtn.addEventListener('click', () => {
 
 // Initial setup
 updateSliderPosition();
-
-
-const imgSlider = document.querySelector(".img-slider");
-const imgFruits = document.querySelectorAll(".img-item.fruit");
-const infoSlider = document.querySelector(".info-slider");
-const infoItems = document.querySelectorAll(".info-item");
-const bgs = document.querySelectorAll(".bg");
-const carousel = document.querySelector(".carousel");
-
-const nextBtn = document.querySelector(".next-btn");
-const prevBtn = document.querySelector(".prev-btn");
-let currentSlide = 0;
-let index = 0;
-const totalSlides = imgFruits.length;
 
 // Consolidate both changeSlide and changeIndex into one function
 function changeSlide(step) {
