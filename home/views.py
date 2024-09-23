@@ -37,3 +37,6 @@ def scoreboard(request,game):
     
     return render(request,'scoreboard.html',{'players': players})
 
+def scoreboard2(request):
+    players = bgmi_Players.objects.all().order_by('Rank')
+    return render(request,'scoreboard2.html',{'players': players})

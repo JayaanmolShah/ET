@@ -106,16 +106,13 @@ class vr_ultimechs_Players(models.Model):
     
 class bgmi_Players(models.Model):
     Name = models.CharField(max_length=50,null=True)
-    Roll_number=models.CharField(max_length=15,null=True)
-    Branch=models.CharField(max_length=20)
-    Year=models.CharField(max_length=15)
-    Email_id=models.EmailField(null=True)
-    Phone=models.IntegerField(null=True)
-    DOB=models.DateField(null=True)
-    Score=models.IntegerField(null=True)
+    Rank=models.IntegerField(null=True)
     Avatar = models.ImageField(upload_to='D:\websocket\ET\ETweb\media\\bgmi', blank=True, null=True)
     Date = models.DateField(auto_now=True)
     Time = models.TimeField(auto_now=True)
+    FP=models.IntegerField(null=True)
+    PP=models.IntegerField(null=True)
+    TP=models.IntegerField(null=True)
     def __str__(self):
         return f"{self.Name}"
     

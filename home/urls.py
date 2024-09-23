@@ -7,4 +7,5 @@ urlpatterns = [
     path("bgmi_home",views.bgmi_home,name='bgmi_home'),
     path("th_home",views.th_home,name='th_home'),
     path("scoreboard/<str:game>/",views.scoreboard,name='scoreboard'),
+    path("scoreboard2",views.scoreboard2,name='scoreboard2'),
 ]
