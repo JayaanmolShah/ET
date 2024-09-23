@@ -1,821 +1,1122 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bits and Bytes</title>
-    <style>
-        /* #text{
-        position: absolute;
-        font-size: 5em;
-        color: rgb(16, 16, 62);
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
-    } */
-
-        .all-login{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    
-    .login{
-      overflow: hidden;
-      background: #afd1f3;
-      color: #162f61;
-      text-align: center;
-      width: 350px;
-      height: 200px;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      border-radius: 1.2rem;
-      margin: 2.5rem;
-        margin-top: 30px;
-    }
-    
-    .login .login-title, .login .login-price{
-      font-size: 18px;
-    }
-    
-    .login:hover {
-      box-shadow: 5px 15px 25px #b1c3db;
-    }
-    
-    .login a:link, .login a:visited{
-      color: #ececec;
-      display: inline-block;
-      text-decoration: none;
-      background-color: #062b48;
-      padding: 1.2rem 3rem;
-      border-radius: 1rem;
-      margin-top: 1rem;
-      font-size: 15px;
-      transition: all 0.2s;
-    }
-    
-    .login a:hover{
-      transform: scale(1.1);
-    }
-    </style>
-</head>
-1) Space Pirate trainer Dx
-2) Pistol whip 
-3)Zombieland: Headshot Fever
-4)Epic roller coasters 
-5) Void racer: Extreme 
-6) Ultimechs
-<body>
-    <div><h2 id="text">choose an option</h2></div>
-    <div class="login">
-        <div class="login-info">
-            <h4 class="login-title">Space Pirate trainer Dx</h4>
-            <a class="login-btn" href="{% url 'scoreboard' 'pirate' %}">CLICK HERE</a>
-        </div>
-    </div>
-    
-    <div class="login">
-        <div class="login-info">
-            <h4 class="login-title">Pistol whip </h4>
-            <a class="login-btn" href="{% url 'scoreboard' 'pistol' %}">CLICK HERE</a>
-        </div>
-    </div>
-
-    <div class="login">
-        <div class="login-info">
-            <h4 class="login-title">Zombieland: Headshot Fever</h4>
-            <a class="login-btn" href="{% url 'scoreboard' 'zombie' %}">CLICK HERE</a>
-        </div>
-    </div>
-    <div class="login">
-      <div class="login-info">
-          <h4 class="login-title">Epic roller coasters
-          </h4>
-          <a class="login-btn" href="{% url 'scoreboard' 'roller' %}">CLICK HERE</a>
-      </div>
-  </div>
-  <div class="login">
-    <div class="login-info">
-        <h4 class="login-title">Void racer: Extreme 
-        </h4>
-        <a class="login-btn" href="{% url 'scoreboard' 'racer' %}">CLICK HERE</a>
-    </div>
-</div>
-<div class="login">
-  <div class="login-info">
-      <h4 class="login-title">Ultimechs
-      </h4>
-      <a class="login-btn" href="{% url 'scoreboard' 'ultimechs' %}">CLICK HERE</a>
-  </div>
-</div>
-</body>
-</html> -->
 <!DOCTYPE html>
-<html lang="en">
 {% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"></script>
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'css/vr_home.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
+        <title>Virtual Odyssey</title>
+        <style>
+        body{
+    background:radial-gradient(circle,#6ef, #0d223d,#161623);
+    /* background-color: #161623; */
+}
 
-<head>
-  <meta charset="UTF-8" />
 
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-  <title>true parallax scrolling website design tutorial</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
-    body {
-      overflow-x: hidden;
-      margin-bottom: 1000px;
-      font-family: 'Poppins:600px', sans-serif;
+.nav{
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2em;
+    z-index: 9999;
+    backdrop-filter: blur(5px); /* Adjust the blur radius */
+
+}
+.nav {
+    position: fixed; /* Keeps the navigation bar fixed in place */
+    top: 0; /* Aligns the navigation bar to the top */
+    right: 0; /* Aligns the navigation bar to the right side of the page */
+  }
+  
+.nav a {
+    position: relative;
+    text-decoration: none;
+    color:#6ef;;
+    padding: 6px 15px;
+    border-radius: 20px;
+    margin: 0 10px;
+    font-weight: 600;
+    z-index: 100;
+  }
+  .nav a:hover,
+  .nav a.active {
+    background-color: #5e7ab7;
+    color: #fff;
+  }
+  
+
+a{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: rgb(0, 0, 0);
+    padding: 0 1em;
+    font-family: "HK Guise";
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.logo{
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "Cosi Times";
+    padding: 1em;
+    z-index: 9999;
+    font-size: 1em;
+    color: white;
+}
+
+.qr { 
+    position: fixed;
+    bottom: 16px; /* Adjust the distance from the bottom if needed */
+    right: 16px;  /* Adjust the distance from the right to the edge */
+    width: 6rem; /* Increase width */
+    height: 6rem; /* Increase height */
+    z-index: 9999;
+    overflow: visible; /* Add this line */
+}
+
+
+
+.spotlight{
+    padding: 2.5rem;
+    height: 100vh;
+    min-height: 30em;
+    background: url("{% static 'images/vrr_img/spotlight.jpg' %}") no-repeat center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: aliceblue;
+    position: relative;
+    overflow: hidden;
+}
+
+.spotlight h1{
+    font-size: 4em;
+    font-size: clamp(2.5em, 5vw, 6em); 
+}
+
+.typewriter p {
+    position: absolute;
+    top: 21.5%; /* Adjust as needed */
+    left: 50%; /* Adjust as needed */
+    transform: translate(-50%, -50%); /* Center it */
+    z-index: 9;
+    font-family: ("Montserrat", sans-serif);
+    font-weight: 700;
+    font-size: large;
+}
+.spotlight p{
+    max-width: 600px;
+    font-size: 1.1em;
+    line-height: 1.5em;
+    margin: 1em auto 0 auto;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+.typewriter h3{
+    position: absolute;
+    transform: translate(-50%, -50%); /* Center it */
+    z-index: 9;
+    font-family: "Monstserrat";
+    font-size: medium;
+
+
+}
+.ab{
+    top: 20%; /* Adjust as needed */
+    left: 50%; /* Adjust as needed */
+
+}
+.abc{
+    top: 28%; /* Adjust as needed */
+    left: 50%; /* Adjust as needed */
+}
+
+
+.output{
+    border-right: 1px #fff solid;
+    font-family: "Cosi Times";
+
+}
+
+
+
+.overlay{
+    background: radial-gradient(circle , rgba(0, 0, 0, 0) 0%,rgba(0,0,0,1) 22%,rgba(0,0,0,1) 100%);
+    width: 200vw;
+    height: 200vh;
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    z-index: 10;
+    transition: opacity 0.5s ease-out,transform 0.5s ease-out;
+}
+.overlay.hidden {
+    opacity: 0;
+    transform: scale(1.5); /* Adjust scale as needed for the outward effect */
+    pointer-events: none; /* Prevents interaction when hidden */
+}
+
+.lights {
+    backdrop-filter: blur(5px); /* Adjust the blur radius */
+    position: fixed; /* Fixed positioning to stay in place */
+    top: 80%; /* Distance from the bottom of the page */
+    left: 52%; /* Distance from the right edge of the page */
+    transform: translate(-80%, -52%);
+    z-index: 9999; /* Ensure it appears above other elements */
+    background: rgba(13, 52, 61, 0.4); /* Semi-transparent background */
+    backdrop-filter: blur(100%); /* Adjust blur radius (less than 100% for visibility) */
+    border: none; /* Remove default border */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border-radius: 5px; /* Rounded corners for the button */
+    cursor: pointer; /* Change cursor on hover */
+    font-size: 16px; /* Font size */
+    color: #fff;
+    transition: ease-in-out 0.5s opacity;
+}
+
+.lights-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: ease-in-out 0.5s opacity;
+}
+
+.pages{
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%; /* Ensures it uses the full width of its container */
+    padding: 20px; /* Optional: adds some spacing inside the element */
+    box-sizing: border-box; 
+    /* background: url(../assets/Services.jpg); */
+}
+
+.panels{
+    height: 100vh;
+    overflow: hidden;
+    padding: 2em;
+    min-height: 35em;
+    display: grid;
+    grid-gap: 1.5em;
+    grid-template-columns: repeat(6,1fr);
+}
+
+.panel{
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    text-align: center;
+    color:#fff;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 1em;
+    cursor: pointer;
+    transition: 500ms;
+    animation: appear 1s ease-in-out;
+}
+
+.panel::before{
+    content: "";
+    position: absolute;
+    background-color: rgba(0,0,0,.5);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.content{
+    position: relative;
+    transform: translateY(-6em);
+}
+.content p{
+    margin: 1em 0;
+    position: relative;
+    opacity: 0;
+    transform: translateY(3em);
+    transition: 300ms;
+}
+
+.content p::before{
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    bottom: -6em;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 3em;
+}
+
+.panel:nth-child(1){
+    background-image: url("{% static 'images/vrr_img/bg1.jpg' %}");
+    animation-delay: 100ms;
+}
+.panel:nth-child(2){
+    background-image: url("{% static 'images/vrr_img/bg2.jpg' %}");
+    animation-delay: 200ms;
+}
+.panel:nth-child(3){
+    background-image: url("{% static 'images/vrr_img/bg3.jpg' %}");
+    animation-delay: 300ms;
+}
+.panel:nth-child(4){
+    background-image: url("{% static 'images/vrr_img/bg4.jpg' %}");
+    animation-delay: 400ms;
+}
+.panel:nth-child(5){
+    background-image: url("{% static 'images/vrr_img/bg5.webp' %}");
+    animation-delay: 500ms;
+}
+.panel:nth-child(6){
+    background-image: url("{% static 'images/vrr_img/bg6.jpg' %}");
+    animation-delay: 600ms;
+}
+
+.number{
+    position: absolute;
+    left: 50%;
+    bottom: -1em;
+    transform: translateX(-50%);
+    font-size: 9em;
+    opacity: 0;
+    transition: 500ms;
+
+}
+
+.panel:hover .number{
+    bottom: -0.5em;
+    opacity: 1;
+}
+
+.panel:hover .content p,
+.panel-active .content p{
+    transform: translateY(0);
+    opacity: 1;
+
+}
+.panel-inactive{
+    transform: scale(0.8);
+    filter: blur(5px);
+}
+.panel-hidden{
+    transform: translateY(3em);
+    opacity: 0;
+}
+.panel-active{
+    width: 0;
+    padding: 1em 0;
+    overflow-x: hidden;
+    height: 90vh;
+    min-height: 30em;
+    animation: grow 600ms ease-out forwards;
+    cursor: default;
+}
+.panel-active h3{
+    font-size: 4em;
+    letter-spacing: 5px;
+}
+
+.panel-active .content p{
+    font-size: 1.4em;
+}
+
+.panel-active .number {
+    display: none;
+}
+
+.panel-active .content p::before{
+    top: 5em;
+    height:5em ;
+}
+
+.panel-active .content p::after{
+    content: "";
+    position: absolute;
+    bottom: -9em;
+    left: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid #fff;
+}
+
+.back-btn{
+    border: none;
+    font-size: 1.1em;
+    padding: 0.8em 2em;
+    background-color: #333;
+    color: #fff;
+    margin: 2em auto 1em auto;
+    transition: 300ms;
+    cursor: pointer;
+    display: none;
+}
+
+.back-btn:hover{
+    background-color: #444;
+}
+.description > div{
+    display:none;
+}
+.description h1{
+    color: #fff;
+}
+.description p{
+    font-size: 1.2em;
+    line-height: 40px;
+    color: #dbdbdb;
+    margin: 2em 0;
+    max-width: 850px;
+}
+.description > .description-active{
+    display: block;
+    padding: 2em;
+}
+
+@media screen and (max-width:800px){
+    .panels {
+        grid-template-columns: 1fr;
+        height: auto;
     }
-
-    .icon {
-      color: #6ef;
-      font-size: 1.25rem;
+    .panel{
+        height: 20em;
     }
+}
 
-    .paralax {
-      position: absolute;
-      height: 100%;
-
+@media screen and (max-width:600px){
+    html{
+        font-size: 14px;
     }
+}
 
-    .paralax-item {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
+@keyframes grow{
+    0%{
+        padding: 1em 0;
+        width: 0;
     }
-
-    .p-item1 {
-      background: url('{% static "images/vr_img/m_1.png" %}') center/cover no-repeat;
-      z-index: -1;
-      margin-bottom: 750px;
+    100%{
+        padding: 1em;
+        width: 100%;
     }
+}
 
-    .p-item3 {
-      /* background: url('{% static "images/vr_img/m_1.png" %}') bottom/100% no-repeat; */
-      /* mix-blend-mode: multiply; */
-      background-size: cover;
-      background-position: center;
-      z-index: 1;
+@keyframes appear{
+    0%{
+        height: 0;
+        padding: 0 1em;
     }
-
-    .p-item4 {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 10000%;
-      height: 100%;
-      content: "";
-      /* background: url('{% static "images/vr_img/m_1.png" %}') repeat-x; */
-      background-size: contain;
-      background-position: center;
-      animation: marquee 20s linear infinite;
-      z-index: 2;
+    100%{
+        height: calc(100vh - 4em);
+        padding: 1em;
     }
+}
 
-    .p-item4::before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 1000%;
-      height: 100%;
-      content: "";
-      background: url('{% static "images/vr_img/m_1.png" %}') repeat-x;
-      background-size: contain;
-      background-position: center;
-      animation: marquee 20s linear infinite;
-      z-index: 1;
+
+.cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #161623;
+}
+
+.cards::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100% ;
+    background: linear-gradient(rgb(6, 2, 250),rgb(195, 0, 255));
+    clip-path: circle(30% at right 70%);
+}
+
+.cards::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100% ;
+    background: linear-gradient(#2196f3,#e91e63);
+    clip-path: circle(20% at 10% 10%);
+}
+
+.container{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    justify-content: center;
+    max-width: 1200px;
+    flex-wrap: wrap;
+    z-index: 1;
+    padding: 20px;
+}
+
+.container .card{
+    position: relative;
+    width: 360px;
+    height: 500px;
+    margin: 30px;
+    box-shadow: 20px 20px 50px rgba(0,0,0,.5);
+    border-radius: 15px;
+    background: rgba(255,255,255,.1);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,.5) ;
+    border-left: 1px solid rgba(255,255,255,.5);
+    backdrop-filter: blur(5px);
+}
+
+.container .card .cont {
+    padding: 20px;
+    text-align: center;
+    transform: translateY(20px);
+    opacity: 1;
+    transition: 0.5s;
+
+}
+
+.container .card:hover .cont{
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+.container .card .cont h2{
+    position: absolute;
+    top: -80px;
+    right: 30px;
+    font-size: 8em;
+    color:rgba(255,255,255,.05) ;
+    pointer-events: none;
+} 
+
+.card img {
+    width: 100%; /* Image takes full width of the card */
+    height: 100; /* Maintain aspect ratio */
+    object-fit: cover; /* Cover the container while maintaining aspect ratio */
+    display: block; /* Remove bottom space */
+}
+
+.container .card .cont h3{
+    font-size: 1.8em;
+    color: #fff;
+    z-index: 1;
+}
+
+.container .card .cont p{
+    font-size: 1em;
+    color: #FFF;
+    font-weight: 300;
+}
+
+
+.description a {
+    border: 2px solid #6ef;
+    box-shadow: 0 0 20px #6ef;
+    padding: 10px 20px; /* Add padding for size */
+    font-size: 24px; /* Increase font size */
+    color: #6ef; /* Text color */
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Optional: add rounded corners */
+    transition: color 0.3s, box-shadow 0.3s; /* Smooth transitions */
+    left: 50%;
+}
+
+.description a:hover {
+    color: white; /* Change text color on hover */
+    box-shadow: 0 0 30px #6ef; /* Increase glow effect on hover */
+    /* Optional: You can adjust border color or add more effects here */
+}
+
+
+.bgAnimation{
+    position: absolute;
+    width: 100%;
+    height: 400vh;
+    display: grid;
+    grid-template-columns: repeat(20,1fr);
+    grid-template-rows: repeat(20,1fr);
+    background: #1d1d1d;
+    filter: saturate(2);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.colorBox{
+    filter: brightness(1.1);
+    transition: 2s ease;
+    position: relative;
+    margin: 2px;
+    background: #1d1d1d;
+}
+
+.colorBox:hover{
+    background: #00bfff;
+    transition-duration: 0s;
+    z-index: 9999;
+}
+
+.backgroundAmim{
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background: #00bfff;
+    filter: blur(60px);
+    animation: animBack 6s linear infinite;
+}
+
+@keyframes animBack {
+    0%{
+        top: -60px;
     }
-
-    @keyframes marquee {
-      0% {
-        transform: translate3d(0, 0, 0);
-      }
-
-      100% {
-        transform: translate3d(-200vw, 0, 0);
-      }
+    100%{
+        top: 120%;
     }
-
-    .container {
-      position: relative;
-      z-index: 1;
-      max-width: 1140px;
-      margin: 0 auto;
-      margin-top: 100vh;
-    }
-
-    .content-header {
-      font-family: sans-serif;
-      color: white;
-      text-align: center !important;
-      text-transform: uppercase;
-      margin-left: 200px;
-      margin-right: -10%;
-      outline: none;
-      /* linear-gradient(transparent, rgba(0, 0, 0, 0.4)); */
-      animation: glow 1.5s linear infinite;
-    }
-
-    @keyframes glow {
-      0% {
-        text-shadow: 0 0 0.6px #ffffff, 0 0 1.2px #ffffff, 0 0 1.8px #ffffff;
-      }
-
-      100% {
-        text-shadow: 0 0 1.2px #ffffff, 0 0 2.4px #ffffff, 0 0 3.6px #ffffff;
-      }
-    }
-
-    .content-header h1 {
-      font-size: 100px;
-      font-weight: 200;
-      color: rgb(255, 255, 255);
-      margin-bottom: -40px;
-    }
-
-    .content-header h2 {
-      font-size: 40px;
-      font-weight: 500;
-      color: white;
-    }
-
-    .content {
-      width: 200px;
-      height: auto;
-      margin-right: 40px;
-      margin-top: 100px;
-      margin-left: 200px;
-      padding: 20px;
-    }
-
-    .sec {
-      position: relative;
-      height: 800px;
-      width: 100%;
-      z-index: 100;
-      margin-top: 890px;
-      background-color: #95c6fb;
-    }
-
-    header {
-      display: flex;
-      position: fixed;
-      top: 0;
-      left: 0px;
-      width: 10%;
-      padding: 30px 100px;
-      justify-content: space-between;
-      align-items: flex-start;
-      z-index: 100;
-    }
-
-    .logo {
-      position: fixed;
-      top: 0;
-      left: 0;
-      font-size: 1rem;
-      font-family: "Poppins ";
-      pointer-events: none;
-      color: #6ef;
-    }
-
-    .logo img {
-      position: absolute;
-      left: 0;
-      top: 0;
-    }
-
-    .navi {
-      position: fixed;
-      /* Keeps the navigation bar fixed in place */
-      top: 0;
-      /* Aligns the navigation bar to the top */
-      right: 0;
-      /* Aligns the navigation bar to the right side of the page */
-      width: auto;
-      /* Width adjusts to the content */
-      padding: 10px 20px;
-      /* Padding around the links */
-      display: flex;
-      /* Use flexbox for layout */
-      align-items: flex-end;
-      /* Align items to the end (right) of the container */
-      z-index: 1000;
-      /* Ensures the nav is on top of other content */
-    }
-
-    .navi a {
-      position: relative;
-      text-decoration: none;
-      color: #6ef;
-      ;
-      padding: 6px 15px;
-      border-radius: 20px;
-      margin: 0 10px;
-      font-weight: 600;
-      z-index: 100;
-    }
-
-    .navi a:hover,
-    .navi a.active {
-      background-color: #5e7ab7;
-      color: #fff;
-    }
-
-    /*3D CAROUSEL*/
-    .carousel {
-      height: 100vh;
-      /* background: url("../assets/dott.jpg") no-repeat center center/cover; */
-      background-size: cover;
-      background-position: center;
-      z-index: -1;
-      position: relative;
-      overflow: hidden;
-      top: 800px;
-      width: 100%;
-    }
-
-    .img-slider {
-      transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
-    }
-
-    .img-box {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      height: 1600px;
-      width: 1600px;
-      bottom: -960px;
-      z-index: 351;
-    }
-
-    .img-box .img-list {
-      height: inherit;
-      transform: rotate(90deg);
-    }
-
-    .img-list .img-slider {
-      height: inherit;
-      display: flex;
-      align-items: center;
-      transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
-    }
-
-    .img-slider .img-item {
-      position: absolute;
-      left: 0;
-      transform: rotate(calc(360deg / 4 * var(--i)));
-      transform-origin: 800px;
-      transition: transform 0.5s ease;
-    }
-
-    .img-item img {
-      transform: rotate(-90deg);
-      filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.1));
-    }
-
-    .img-item.fruit img {
-      transform: rotate(-90deg) translateY(0%);
-      scale: 0;
-      transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
-      animation: float-fruit 10s ease-in-out infinite;
-    }
-
-    .img-item.fruit.active img {
-      scale: 1;
-      transition-delay: 0.1s;
-    }
-
-    @keyframes float-fruit {
-      0% {
-        translate: 0;
-      }
-
-      50% {
-        translate: -20%;
-      }
-
-      100% {
-        translate: 0;
-      }
-    }
-
-    .img-item.active img {
-      scale: 1;
-      transition: transform 0.5s ease;
-    }
-
-    .navigation {
-      position: absolute;
-      left: 50%;
-      top: 320%;
-      transform: translate(-50%, -50%);
-      width: 90%;
-      display: flex;
-      justify-content: space-between;
-      z-index: 100;
-    }
-
-    .navigation span {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      width: 65px;
-      height: 65px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      font-size: 55px;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    .navigation span:hover {
-      background: rgba(255, 255, 255, 0.4);
-    }
-
-    .info-slider {
-      position: relative;
-      transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
-    }
-
-    .info-item {
-      display: none;
-      color: #fff;
-      transition: display 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
-    }
-
-    .info-item.active {
-      display: flex;
-    }
-
-    .info-box {
-      font-family: "Poppins", sans-serif;
-      position: absolute;
-      right: 8%;
-      top: 320%;
-      width: 350px;
-      height: 300px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      overflow: hidden;
-      z-index: 101;
-    }
-
-    .info-slider .info-item {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      color: #fff;
-      height: 150px;
-    }
-
-    .info-slider {
-      display: flex;
-      overflow: hidden;
-      white-space: nowrap;
-      width: 100%;
-      /* Adjust to your needs */
-    }
-
-    .info-item {
-      flex: 0 0 100%;
-      /* Each item takes full width of the slider */
-      transition: transform 0.5s ease-in-out;
-    }
+}
 
 
+.rulebook {
+    position: relative; /* Allows for z-index stacking */
+    top: 80px;
+    z-index: 2; /* Ensures it's above the background layers */
+    color: white; /* Sets text color for better visibility */
+    padding: 20px; /* Adds some padding around the content */
+    text-align: center; /* Centers the text */
+    border-radius: 8px; /* Optional: rounds the corners */
+    max-width: 800px; /* Limits the width for readability */
+    margin: 0 auto; /* Centers the rulebook on the page */
+    margin-top: 30px;
+    backdrop-filter: blur(5px); /* Adjust the blur radius */
+    border-radius: 10px; /* Rounds the corners of the border */
+    box-shadow: 0 4px 20px rgba(21, 153, 229, 0.5); /* Adds a subtle shadow */
+}
 
-    .info-item h2 {
-      font-size: 24px;
-      margin-bottom: 6px;
-    }
+.rulebook h1 {
+    margin: 20px 0; /* Adds spacing above and below headings */
+    text-align: center; /* Centers the headings */
+    font-family: 'Arial', sans-serif; /* Sets a clean font */
+    font-weight: bold; /* Makes headings bold */
+}
+.rulebook h2 {
+    font-size: 20px;
+    text-align: left; /* Centers the headings */
+    font-family: 'Arial', sans-serif; /* Sets a clean font */
+    font-weight: bold;
+}
 
-    .info-item p {
-      display: flex;
-    }
+.rulebook p {
+    display: flex;
+    margin: 15px 0; /* Adds spacing above and below the paragraph */
+    line-height: 1.6; /* Increases line height for better readability */
+    text-align: left; /* Aligns text to the left */
+    font-family: 'Arial', sans-serif; /* Consistent font */
+    font-size: 16px; /* Sets a readable font size */
+    color: white; /* Keeps the text color white */
+    padding: 0 20px; /* Adds horizontal padding for better spacing */
+}
+footer {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  background: #121315;
+  z-index:9999 ;
+  margin-top: 225px;
+}
+footer ul {
+  list-style: none;
+}
+footer p {
+  color: #fff;
+  max-width: 25em;
+  font-size: 0.9em;
+  line-height: 23px;
+}
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+footer .footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2em;
+}
+.footer .footer-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2em;
+}
+.brand {
+  display: block;
+  font-size: 1.8em;
+  font-weight: 600;
+  margin-bottom: 1em;
+}
+.media-icons li,
+.services-icons li {
+  display: inline-block;
+  margin: 0.5em 0.5em 0.5em 0;
+}
+.media-icons a {
+  font-size: 1.1em;
+  width: 2em;
+  height: 2em;
+  border: 1px #fff solid;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+.media-icons a:hover {
+  background: #fff;
+  color: #111;
+}
+.services-icons a {
+  font-size: 1.6em;
+}
+.services-icons a:hover {
+  color: #94fbab;
+}
+.footer-bottom {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid rgba(138, 208, 153, 0.36);
+  padding: 2em;
+}
+.footer .footer-menu {
+  margin-bottom: 1em;
+}
+.footer .footer-menu li {
+  display: inline-block;
+  margin: 0 0.7em 0.7em 0;
+  text-align: center;
+}
+.footer .footer-menu a {
+  transition: 0.3s;
+  font-weight: 600;
+}
+.footer .footer-menu a:hover {
+  color: #94fbab;
+}
+.input-wrap {
+  margin: 1em 0;
+  display: flex;
+}
+.input-wrap input {
+  padding: 0.5em;
+  border: none;
+  background: #20232a;
+  color: #ccc;
+}
+.input-wrap input:focus {
+  outline: none;
+}
+.input-wrap a {
+  padding: 0.8em;
+  background: #94fbab;
+  border: none;
+  color: #217634;
+  transition: 0.3s;
+}
+.input-wrap button:hover {
+  background: #fff;
+  color: #111;
+}
 
-    .info-box .info-slider {
-      transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
-    }
+@media screen and (max-width: 900px) {
+  .footer .container {
+    flex-direction: column;
+  }
+}
+        </style>
+    </head>
+    <body> 
+        
+        <div class="nav">
+            <div class="items-left">
+                <a href="/">Bits&Bytes</a>
+            </div>
+            <div class="items-right">
+                <a href="{% url 'vr_home' %}">home</a>
+                <a href="https://forms.gle/fTVdVnVRrmaabqu66" target="_blank">register</a>
+                <a href="#rules-section">rules</a>
+            </div>
+        </div>
+        <div class="logo-container">
+            <h1 class="logo">Virtual Odyssey</h1>
+        </div>
+        
+        <section class="spotlight">
+            <div class="logo-container">
+                <h1 class="logo"></h1>
+            </div>
+            <div class="typewriter">
+                <p> &nbsp;
+                    <span class="output"></span>
+                </p>
+                <h3 class="ab">GET READY TO</h3>
+                <h3 class="abc">ON 23<sup>rd</sup> AND 24<sup>rd</sup> SEPTEMBER 2024 !!!</h3>
+            </div>
+            <div class="overlay"></div>
+            <button class="lights" id="toggleOverlay">Lights
+            </button>
+        </section>
+        
+        <section class="pages">
+            <button class="back-btn">Back</button>
+            <div class="panels">
+                <div class="panel">
+                    <div class="content">
+                        <h3>Space Pirate Trainer</h3>
+                        <p> 80s arcade cabinet</p>
+                    </div>
+                    <h1 class="number">1</h1>
+                </div>
+                <div class="panel">
+                    <div class="content">
+                        <h3>Pistolwhip</h3>
+                        <p> physical action-rhythm game</p>
+                    </div>
+                    <h1 class="number">2</h1>
+                </div>
+                <div class="panel">
+                    <div class="content">
+                        <h3>Zombieland Headshot Fever</h3>
+                        <p> zombie-killing race sport</p>
+                    </div>
+                    <h1 class="number">3</h1>
+                </div>
+                <div class="panel">
+                    <div class="content">
+                        <h3>Epic Roller Coaster</h3>
+                        <p>Roller coasters and shooting! </p>
+                    </div>
+                    <h1 class="number">4</h1>
+                </div>
+                <div class="panel">
+                    <div class="content">
+                        <h3>Void Racer Extreme</h3>
+                        <p>fast-paced racing game</p>
+                    </div>
+                    <h1 class="number">5</h1>
+                </div>
+                <div class="panel">
+                    <div class="content">
+                        <h3>Ultimechs</h3>
+                        <p>pilot high-performance mechs</p>
+                    </div>
+                    <h1 class="number">6</h1>
+                </div>
+            </div>
+            <div class="description">
+                <div>
+                    <h1>Space Pirate Trainer</h1>
+                    
+                    <p>Space Pirate Trainer DX is the official trainer for wannabe space pirates. 
 
-    .bg-box {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 110%;
-      height: 100%;
-      z-index: 100;
-    }
+                        Space Pirate Trainer puts you inside one of those awesome classic 80s arcade cabinets, where you’ll fight off relentless waves of droids with all the weapons and gadgets a Space Pirate would ever need. Pick up your blasters, tie up your sneakers and dance your way into the Space Pirate Trainer hall of fame!
+                        
+                        The all-new DX version will put your skills to the test with kick-ass multiplayer modes. 
+                        
+                        ARENA is a glimpse at the future of VR. Transform any indoor space into an incredible VR arena as you play a manic game of hide and seek with blasters. You’ll need to find a large open space, so start scouting for empty halls, tennis courts, and basketball courts!
+                        
+                        VERSUS is an all-new multiplayer version of Space Pirate Trainer. Every time you shoot a droid, another one will appear targeting your opponent, ending in all-out blaster chaos! 
+                    </p>
+                    <a href="{% url 'scoreboard' 'pirate' %}">Scoreboard</a>
+                    
+                </div>
+                <div>
+                    <h1>Pistolwhip</h1>
+                    
+                    <p>Enter: The Ultimate Action Hero.
+                        Pistol Whip is a physical action-rhythm game where film-inspired gunplay and blood-pumping beats collide.
+                        Winner of VR GOTY at the 2020 DICE Awards, this Physical FPS is fueled by dynamic tracks, dreamscape visuals, and easy to learn, tough to master gunplay. Inspired by iconic action cinema, the only thing that goes harder than this game’s soundtrack is you. Conquer the leaderboards, flow to the music with your own rhythmic patterns, or go all out as a dual-wielding deadeye with nothing to lose.
+                        An Action-Rhythm Rush
+                        Take aim and fire on the beat as you barrel through Scene after Scene. Find your flow, rack up points, become unstoppable.
+                        The Big Gun: That's you
+                        Take on special Scenes inspired by iconic movies, and become deadeye legend.
+                        Limitless Additional Content
+                        Play the growing library of explosive Remixed Scenes (mods) created by the modding community directly in-game. Find them in the Remixes tab!
+                        Absurdly Customizable
+                        Dig into the Styles System to overhaul core mechanics to your exact preferences. Make Pistol Whip a part of your fitness routine, or tweak your loadout to fit your accessibility needs.
+                        Endless Ways To Play
+                        Tackle over 40 unique Scenes, bag daily Contracts challenges, and compete locally with friends in Party Mode.
+                        Cinematic Campaigns
+                        Ride into the wild, wild west with Smoke & Thunder, or face down a technicolour Robopocalypse in 2089.
+                    </p>
+                    <a href="{% url 'scoreboard' 'pistol' %}">Scoreboard</a>
+                </div>
+                <div>
+                    <h1>Zombieland Headshot Fever</h1>
+                    <p>The award-winning Zombieland: Headshot Fever is an arcade light-gun game built for VR.
 
-    .bg-box .bg {
-      opacity: 2;
-      transition: opacity 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
-    }
+                        This zombie-killing race sport brings light-gun games into the 21st century! Headshot combos slow the clock, meaning the most precise shooter is the fastest - challenge the leaderboards with skill, speed, and accuracy.
+                        
+                        FEATURES
+                        Bullet Time - Two headshots turn the world slow!
+                        Leaderboards - Challenge the world!
+                        Weapons - Unlock and upgrade a range of weapons!
+                        The Zombieland Invitational - The zombie-killing race course of your nightmares!
+                        Arcade Mode - a new roguelite experience!
+                    </p>
+                    <a href="{% url 'scoreboard' 'zombie' %}">Scoreboard</a>
 
-    .bg-box .bg.active {
-      opacity: 1;
-    }
+                </div>
+                <div>
+                    <h1>Epic Roller Coaster</h1>
+                    <p>In Epic Roller Coasters you'll get the same feeling of real roller coasters in places and situations that probably you will never have in the real life! There are so many possibilities: magic, world of dinosaurs, haunted houses and so many others!
 
-    .bg-box .bg::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 800px;
-      height: 800px;
-      background: rgba(255, 255, 255, 0.7);
-      border-radius: 50%;
-      filter: blur(200px);
-      z-index: 1;
-      pointer-events: none;
-    }
+                        You'll find three different modes:
+                        - Classic is where you, your family and friends can take a clasic roller coaster ride.
+                        - Shooter mode is the perfect combination of two amazing universes! Roller coasters and shooting! 
+                        - Race mode: take the control of the cart on your own time or fast as possible challenging your friends for the best score!
+                        
+                        Each roller coaster comes with a new cart and weapon. 
+                        
+                        Don't forget to call your friends to ride your favorites roller coasters with you. You can also compete to discover who will ride the roller coaster faster or collaborate in the shooter mode to hit as much targets as you can. </p>
+                        <a href="{% url 'scoreboard' 'roller' %}">Scoreboard</a>
 
-    .bg-box .bg:nth-child(1) {
-      /* background: url("images/erangel.png") no-repeat center center/cover; */
-      background-color: #68b4eb;
-      background-size: cover;
-      background-position: center;
-      z-index: 1;
-    }
+                </div>
+                <div>
+                    <h1>Void Racer Extreme</h1>
+                    <p>If you are looking for a fast-paced racing game and love sci-fi vibes, this is the game for you." - The Verge
 
-    .bg-box .bg:nth-child(2) {
-      /* background: url("images/miramar.png") no-repeat center center/cover; */
-      background-color: #f2f485;
-      background-size: cover;
-      background-position: center;
-      z-index: 1;
-    }
+                        Multiple ways to play:
+                        - Career mode
+                        - Online multiplayer
+                        - Time-trials
+                        - Leaderboards
+                        - Bonus game modes
+                        
+                        Hone your skills in single player mode. Race against AI, complete challenges to unlock new events, or shave seconds off your time in fast-lap mode.
+                        Take on racers from around the world in up to 4 PLAYER ONLINE MULTIPLAYER!
+                        
+                        Features:
+                        - Over 100 single player levels
+                        - 12 tracks to master (individually comfort rated)
+                        - Multiple bikes with unique handling characteristics
+                        - 8 diverse power-ups to give you an edge
+                        - Weapons to use against and help you beat friends, strangers or AI
+                        - Realistic bike leaning - corner hard & see the ground come up to meet you (can be disabled for comfort if desired)
+                        - Unique energy management mechanic - collect energy from rings to allow tactical off-track shortcuts through the void</p>
+                        <a href="{% url 'scoreboard' 'racer' %}">Scoreboard</a>
 
-    .bg-box .bg:nth-child(3) {
-      /* background: url("images/sanhok.png") no-repeat center center/cover; */
-      background-color: #1c2028;
-      background-size: cover;
-      background-position: center;
-      z-index: 1;
-    }
+                </div>
 
-    .bg-box .bg:nth-child(4) {
-      /* background: url("images/vikendi.png") no-repeat center center/cover; */
-      background-color: #4896d5;
-      background-size: cover;
-      background-position: center;
-      z-index: 1;
-    }
+                <div>
+                    <h1>Ultimechs</h1>
+                    <p>The goal zones light up. The crowd roars. A perfectly engineered mech enters the arena under your control. Ultimechs is a free VR game that lets players remotely pilot high-performance mechs that compete in the  future of sport as they zoom, punch and score their way to victory.</p>
+                    <a href="{% url 'scoreboard' 'ultimechs' %}">Scoreboard</a>
 
-    .bg-box {
-      position: relative;
-      /* Ensure it's a containing block for the z-index */
-      border: 1px solid #ccc;
-      /* Just to make it visible */
-    }
+                </div>
+            </div>
+        </section>
 
-    .bg-box .bg {
-      position: absolute;
-      /* Required for z-index to work */
-      width: 100%;
-      height: 100%;
-    }
+       
 
-    .bg-box .bg:nth-child(1) {
-      background-color: #68b4eb;
-      background-size: cover;
-      background-position: center;
-      z-index: 1;
-    }
-  </style>
-</head>
+        <section class="rules" id="rules-section">
+            <div class="bgAnimation" id="bgAnimation"></div>
+                <div class="backgroundAmim">
+                </div>
+            </div>
+           <div class="rulebook">
+            <h1>Game Rules</h1>
+            <h2>Navigating the interface :</h2>
 
-<body>
-  <div class="paralax">
-    <div class="paralax-item p-item1"></div>
-    <div class="paralax-item p-item2"></div>
-    <div class="paralax-item p-item3"></div>
-    <div class="paralax-item p-item4"></div>
-    <div class="paralax-item p-item5"></div>
-  </div>
+            <p>•You’ll see a virtual environment when you put on the headset. Use the controllers to navigate it.</p>
+            <p>•There are 2 controllers and the respective buttons which helps for various interactions.</p>
 
-  <header class="logo">
-    <!-- <Link to="#" className='nav_logo'>
-        <img src="../assets/image.png" alt="Navbar Logo"/>
-      </Link> -->
-    <!-- <a href="#">Bits&Bytes</a> -->
-    <!-- <img src="../assets/image.png"> -->
-    <div class="icon">Bits&Bytes</div>
-  </header>
-  <nav class="navi">
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Games</a>
-    <a href="#">Rule Book</a>
-  </nav>
+            <h2>Interacting in VR :</h2>
 
-  <div class="container">
-    <div class="content-header">
-      <h1>ENGINEERING TODAY</h1>
-      <h1>Virtual Odyssey</h1>
-      <h2>Escape from Reality</h2>
-    </div>
+            <p>•	The controllers act as your hands in the virtual world. </p>
+            <p>•	The controllers act as your hands in the virtual world.
+            </p>
+            <p>•	Use trigger to interact with objects. For example , in shooting trigger is often is used for firing.
+            </p>
+            <p>•	The grip button is used for different actions depending on game. In some games , they might be used to grab and hold objects.
+            </p>
+           </div>
+           <div class="rulebook">
+            <h1>Controls :</h1>
 
-    <!-- <div class="content">
-        <img src="assets/image.png" alt="" />
-      </div> -->
+            <h2>Right Controller :</h2>
+            <p>•	Thumbstick (Joystick): Used for movement in games that support it. Push the thumbstick up, down, left, or right for directional input.
+            </p>
+            <p>•	A Button: Primary interaction button. Press to select or interact with objects.
+            </p>
+            <p>•	B Button: Secondary interaction button. Often used for additional interactions or as a back button.
+            </p>
+            <p>•	Trigger (Index Finger): Used for grabbing, shooting, or interacting based on the game. Squeezing the trigger initiates actions.
+            </p>
+            <p>•	Grip Button (Side Squeeze): Used for grabbing and holding objects in a more natural way. Squeezing the grip button allows you to hold items.
+            </p>
+            <p>•	Menu Button: Opens the in-game menu or options
+            </p>
 
-  </div>
+            <h2>Left Controller :</h2>
+            <p>•	Grabbing: Use the grip buttons to pick up and hold objects.
+            </p>
+            <p>•	Pointing: Use the index finger to point at objects.
+            </p>
+            <p>•	Throwing: Release the grip buttons or trigger to throw objects.
+            </p>
+            <p>•	Shooting: In shooting games, use the triggers to shoot.
+            </p>
+            <p>•	Teleportation: In some games, use the thumbstick to move or teleport around the environment.
+            </p>
+            <p>•	Climbing: Some games allow you to grip onto surfaces and climb.
+            </p>
+           </div>
 
-  <div class="carousel" id="carousel">
-    <div class="bg-box">
-      <div class="bg"></div>
-      <div class="bg"></div>
-      <div class="bg"></div>
-      <div class="bg"></div>
-    </div>
-    <div class="img-box">
-      <div class="img-list">
-        <div class="img-slider">
-          <div class="img-item fruit active" style="--i: 0">
-            <img src='{% static "images/vr_img/bg1.jpg" %}' />
+           <div class="rulebook">
+            <h1>The Event is divided into 4 stages :</h1>
+
+            <h2>Registration stage:</h2>
+            <p>In this stage the participants would be grouped in a batch of 20 people and a detailed knowledge about the VR technology would be provided to them and based on that in further round quiz will be conducted.
+            </p>
+
+            <h2>The League Stage:</h2>
+            <p>In League Stage there will be 3 games.
+            </p>
+            <p>A player can choose to play any of the three games based on their choice.
+            </p>
+            <p>A participant can play multiple games by paying Rs 75/- for each game.
+            </p>
+            <p>30 players (Top players of each game ) will be qualified for the Quiz stage.
+            </p>
+
+            <h2>Quiz Stage: </h2>
+            <p>In this stage the 30 players from the previous stage will participate. A quiz would be conducted on the basis of the knowledge provided to them in the Registration stage.
+                Out of 30 participants 16 would be selected on the basis of their score for the Finals.</p>
+
+            <h2>Finals :</h2>
+            <p>16 players qualified from the Quiz stage will compete with each other.
+            </p>
+            <p>They will play 1v1 game which would not be from the League stage game.
+            </p>
+            <p>The game would not be known to the qualified players before the match.
+            </p>
+           </div>
+
+           <div class="rulebook">
+            <h1>FINALS</h1>
+            <h2>The finals will be conducted in four rounds :</h2>
+            <p>First round : In the first roundFirst round : In the first round of finals 16 players will compete with each other out of which  8 players will get qualified for second round.
+            </p>
+            <p>Second round : In the first round of finals 8 qualified players from first round will compete with each other out of which  4 players will get qualified for third round.
+            </p>
+            <p>Third round : In the first round of finals 4 qualified players from second round will compete with each other out of which  2 players will get qualified for fourth round.
+            </p>
+            <p>Fourth round : In fourth round the 2 player will compete each other for the first and second position.
+            </p>
+            <p>The first winner will get the prize pool of Rs.5000/-</p>
+            <p>The second winner will get the price pool of Rs.3000/-.</p>
+           </div>
+
+
+
+        </section>
+
+        <script src="{% static 'js/vr_home.js' %}"></script>
+        <script src="{% static 'js/vr2.js' %}"></script>
+        <script>
+            VanillaTilt.init(document.querySelectorAll(".card"),{
+                max: 25,
+                speed: 400,
+                glare: true,
+                "max-glare": 1,
+                
+            });
+        </script>
+       
+    </body>
+    <footer class="footer">
+        <div class="footer-container">
+          <div class="col1">
+            <a href="#" class="brand" target="_black"></a>
+            <ul class="media-icons">
+              <li>
+                <a
+                  href="https://www.instagram.com/aissms_coe/?hl=en"
+                  target="_black"
+                  ><i class="fa-brands fa-instagram"></i
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="https://in.linkedin.com/school/aissms-coe/"
+                  target="_black"
+                  ><i class="fa-brands fa-linkedin"></i
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/@aissmscollegeofengineering2566"
+                  target="_black"
+                  ><i class="fa-brands fa-youtube"></i
+                ></a>
+              </li>
+            </ul>
           </div>
-          <div class="img-item fruit" style="--i: 1">
-            <img src="{% static 'images/vr_img/bg2.jpg' %}" />
+          <div class="col2">
+            <ul class="footer-menu">
+              <li><a href="/" target="_black">Home</a></li>
+              <li><a href="{% url 'vr_home' %}" target="_black">VR</a></li>
+              <li><a href="{% url 'bgmi_home' %}" target="_black">BGMI</a></li>
+              <li><a href="{% url 'th_home' %}" target="_black">TREASURE HUNT</a></li>
+              <li>
+                <a href="https://aissmscoe.com/" target="_black">AISSMS COE</a>
+              </li>
+              <p>
+                <br />
+                Address: No. 1, Kennedy Road, Near RTO Office Sangamvadi,
+                Shivajinagar, Pune, Maharashtra 411001
+              </p>
+            </ul>
           </div>
-          <div class="img-item fruit" style="--i: 2">
-            <img src="{% static 'images/vr_img/bg3.jpg' %}" />
-          </div>
-          <div class="img-item fruit" style="--i: 3">
-            <img src="{% static 'images/vr_img/bg4.jpg' %}" />
-          </div>
-          <div class="img-item fruit" style="--i: 4">
-            <img src="{% static 'images/vr_img/bg4.jpg' %}" />
-          </div>
-          <div class="img-item fruit" style="--i: 5">
-            <img src="{% static 'images/vr_img/bg4.jpg' %}" />
-          </div>
-          <div class="img-item" style="--i: 0">
-            <img src="" />
-          </div>
-          <div class="img-item" style="--i: 0">
-            <img src="" />
-          </div>
-          <div class="img-item" style="--i: 0">
-            <img src="" />
-          </div>
-          <div class="img-item" style="--i: 0">
-            <img src="" />
+          <div class="col3">
+            <p>Registrations now open!</p>
+            <form>
+              <div class="input-wrap">
+                <a
+                  class="fa-solid fa-paper-plane"
+                  href="https://aissmscoe.akronsystems.com/CoeWorkShop.aspx"
+                  id="clg-form"
+                  target="_black"
+                ></a>
+              </div>
+            </form>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-  </div>
-  <div class="info-box">
-    <div class="info-slider">
-      <div class="info-item">
-        <h2>Space Pirate Trainer </h2>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum
-          dolorem fugiat in dolorum quia officiis saepe laborum ab?
-        </p>
-      </div>
-      <div class="info-item">
-        <h2>Pistolwhip</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum,
-          soluta? Nisi, suscipit!
-        </p>
-      </div>
-      <div class="info-item">
-        <h2>Zombieland Headshot Fever</h2>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem
-          magnam ipsam dolorem a officia, fugit dolores blanditiis officiis
-          non. Veritatis.
-        </p>
-      </div>
-      <div class="info-item">
-        <h2>Epic Roller Coaster</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ratione
-          dolorem quas recusandae corporis officia aut?
-        </p>
-      </div>
-      <div class="info-item">
-        <h2>Void Racer Extreme</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ratione
-          dolorem quas recusandae corporis officia aut?
-        </p>
-      </div>
-      <div class="info-item">
-        <h2>Ultimechs</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A ratione
-          dolorem quas recusandae corporis officia aut?
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="navigation">
-    <span class="prev-btn">
-      <i class="bx bx-chevron-left"></i>
-    </span>
-    <span class="next-btn">
-      <i class="bx bx-chevron-right"></i>
-    </span>
-  </div>
-
-  <div class="sec">
-    <h2>Parallax Scrolling</h2>
-    <p>
-      Date : 23th and 24th September 2024
-
-
-
-      Entry Fee : ₹ 75 per person
-      Prizepool : ₹ 8000 (1st Place : ₹ 5000 , 2nd Place : ₹ 3000)
-      Virtual reality (VR) is a simulated experience that employs pose tracking and 3d near-eye displays to give the
-      user an immersive feel of a virtual world.
-      The Event will be held in several stages. Players will be eliminated in each stage according their points and
-      rankings and the best team to top the leaderboard wins.
-
-      Navigating the interface :
-      • You’ll see a virtual environment when you put on the headset. Use the controllers to navigate it.
-      • There are 2 controllers and the respective buttons which helps for various interactions.
-      Interacting in VR :
-      • The controllers act as your hands in the virtual world.
-      • Use trigger to interact with objects. For example , in shooting trigger is often is used for firing.
-      • The grip button is used for different actions depending on game. In some games , they might be used to grab and
-      hold objects.
-
-      Controls :
-      Right Controller :
-      • Thumbstick (Joystick): Used for movement in games that support it. Push the thumbstick up, down, left, or right
-      for directional input.
-      • A Button: Primary interaction button. Press to select or interact with objects.
-      • B Button: Secondary interaction button. Often used for additional interactions or as a back button.
-      • Trigger (Index Finger): Used for grabbing, shooting, or interacting based on the game. Squeezing the trigger
-      initiates actions.
-      • Grip Button (Side Squeeze): Used for grabbing and holding objects in a more natural way. Squeezing the grip
-      button allows you to hold items.
-      • Menu Button: Opens the in-game menu or options
-
-      Left Controller :
-      • Grabbing: Use the grip buttons to pick up and hold objects.
-      • Pointing: Use the index finger to point at objects.
-      • Throwing: Release the grip buttons or trigger to throw objects.
-      • Shooting: In shooting games, use the triggers to shoot.
-      • Teleportation: In some games, use the thumbstick to move or teleport around the environment.
-      • Climbing: Some games allow you to grip onto surfaces and climb.
-      The Event is divided into 2 stages :
-      • The League Stage:
-      In League Stage there will be 3 games.
-      A player can choose to play any of the three games based on their choice.
-      A participant can play multiple games by paying Rs 75/- for each game.
-      16 players (Top players of each game ) will be qualified for the finals.
-
-
-      • Finals
-      16 players qualified from the League stage will compete with each other.
-      They will play 1v1 game which would not be from the League stage game.
-      The game would not be known to the qualified players before the match.
-
-      The finals will be conducted in four rounds :
-
-      First round : In the first round of finals 16 players will compete with each other out of which 8 players will get
-      qualified for second round.
-
-      Second round : In the first round of finals 8 qualified players from first round will compete with each other out
-      of which 4 players will get qualified for third round.
-
-      Third round : In the first round of finals 4 qualified players from second round will compete with each other out
-      of which 2 players will get qualified for fourth round.
-      Fourth round : In fourth round the 2 player will compete each other for the first and second position.
-
-      The first winner will get the prize pool of Rs.5000/-
-      The second winner will get the price pool of Rs.3000/-.
-
-
-
-      Student Coordinator ET Coordinator HOD
-      Snehal Kamale Mrs. S. J. Pachouly Dr.S.V.Athawale
-      Sanchit Patil
-
-
-
-
-    </p>
-  </div>
-  <script src="{% static 'js/vr_home.js' %}"></script>
-
-</body>
-
-</html>
+        <div class="footer-bottom">
+          <div class="mekk">
+            <p>@Bits&Bytes 2024 - All Rights Reserved</p>
+          </div>
+        </div>
+      </footer>
+</html>    

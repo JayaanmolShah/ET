@@ -1,188 +1,571 @@
 {% load static %}
-<!DOCTYPE html>
+<!-- #608e71 -->
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cards with Hover Video</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-        }
-        .video-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1; /* Send the video behind other content */
-        }
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            flex-direction: column;
-            align-items: center;
-            padding: 10px 0;
-            background-color: #000;
-            z-index: 1000;
-        }
-        .logo-container {
-            margin-bottom: 10px; /* Space between logo and menu */
-        }
-        .logo-container img {
-            height: 60px; /* Adjust the height as needed */
-        }
-        .menu {
-            display: flex;
-            gap: 20px;
-            
-           
-        }
-        .menu a {
-            
-            position: relative;
-            font-size: 1.1em;
-            color: #666;
-            text-decoration: none;
-            padding: 6px 20px;
-            transition: 100ms ease-in-out;
-        }
-        .menu a:hover {
-            color: #f6f0f0;
-        }
-        .menu a span {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            border-bottom: 2px solid #880808;
-            border-radius: 15px;
-            transform: scale(0) translateY(50px);
-            opacity: 0;
-            transition: 0.5s;
-        }
-        .menu a:hover span {
-            transform: scale(1) translateY(0);
-            opacity: 1;
-        }
-        .card-container {
-            display: flex;
-            justify-content: space-around;
-            margin: 150px auto 50px; /* Increased margin-top for space below navbar */
-            max-width: 1200px;
-        }
-        .card {
-            position: relative;
-            width: 300px;
-            height: 500px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end; /* Ensure the button stays at the bottom */
-        }
-        .card img, .card video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 0.3s ease-in-out;
-        }
-        .card video {
-            opacity: 0;
-            z-index: 1; /* Make sure the video is on top of the image */
-        }
-        .card:hover img {
-            opacity: 0;
-        }
-        .card:hover video {
-            opacity: 1;
-        }
-        .card a {
-            text-decoration: none;
-            position: relative;
-            z-index: 2; /* Ensure the button is on top of the video */
-            margin: 10px auto; /* Center the button horizontally */
-            padding: 10px 20px;
-            background-color: #880808;
-            border: none;
-            border-radius: 5px;
-            color: #fff;
-            font-size: 1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .card a:hover {
-            background-color: #DC143C;
-        }
-    </style>
-</head>
-<body>
-    <nav>
-        <div class="logo-container">
-            <img src="{% static 'images/aissms_bg.png' %}" alt="Logo">
-        </div>
-        <div class="menu">
-            <a href="/">Home<span></span></a>
-            <a href="/">About<span></span></a>
-            <a href="/">Scoreboard<span></span></a>
-            <a href="/">Rules<span></span></a>
-        </div>
-    </nav>
-    <video class="video-bg" autoplay muted loop>
-        <source src="{% static 'videos/black_bg.mp4' %}" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
 
-    <div class="card-container">
-        <div class="card" onmouseover="playVideo(this)" onmouseout="pauseVideo(this)">
-            <img src="{% static 'images/vr.jpeg' %}" alt="Image 1">
-            <video loop muted>
-                <source src="{% static 'videos/vr.mp4' %}" type="video/mp4">
-            </video>
-            <a href="{% url 'vr_home' %}">CLICK HERE</a>
-        </div>
-        <div class="card" onmouseover="playVideo(this)" onmouseout="pauseVideo(this)">
-            <img src="{% static 'images/bgmi.jpg' %}" alt="Image 2">
-            <video loop muted>
-                <source src="{% static 'videos/bgmi.mp4' %}" type="video/mp4">
-            </video>
-            <a href="{% url 'bgmi_home' %}">CLICK HERE</a>
-        </div>
-        <div class="card" onmouseover="playVideo(this)" onmouseout="pauseVideo(this)">
-            <img src="{% static 'images/thunt.png' %}" alt="Image 3">
-            <video loop muted>
-                <source src="{% static 'videos/th.mp4' %}" type="video/mp4">
-            </video>
-            <a href="{% url 'th_home' %}">CLICK HERE</a>
-        </div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bites&Bytes</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+  <style>
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+
+      /*            background-color: #222222;*/
+      background-image: url("{% static 'images/tp4.jpg' %}");
+      /* Background image */
+      background-size: cover;
+      /* Ensure the image covers the entire background */
+      background-position: center;
+      /* Center the background image */
+      background-repeat: no-repeat;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 0;
+      background-color: #043035;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      margin-bottom: 10px;
+      /* Space between logo and menu */
+    }
+
+    .logo-container img {
+      height: 60px;
+      /* Adjust the height as needed */
+    }
+
+    .menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    .menu a {
+      position: relative;
+      font-size: 1.3em;
+      color: #51876c;
+      text-decoration: none;
+      padding: 6px 20px;
+      transition: 100ms ease-in-out;
+    }
+
+    .menu a:hover {
+      color: #f6f0f0;
+    }
+
+    .menu a span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      border-bottom: 2px solid #161623;
+      border-radius: 15px;
+      transform: scale(0) translateY(50px);
+      opacity: 0;
+      transition: 0.5s;
+    }
+
+    .menu a:hover span {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+
+    .card-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 150px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      position: relative;
+      width: 480px;
+      /* Set width to 1920px */
+      height: 270px;
+      /* Set height to 1080px */
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      /* Ensure the button stays at the bottom */
+    }
+
+    .card img,
+    .card video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .card video {
+      opacity: 0;
+      z-index: 1;
+      /* Make sure the video is on top of the image */
+    }
+
+    .card:hover img {
+      opacity: 0;
+    }
+
+    .card:hover video {
+      opacity: 1;
+    }
+
+    .card a {
+      text-decoration: none;
+      position: relative;
+      z-index: 2;
+      /* Ensure the button is on top of the video */
+      margin: 10px auto;
+      /* Center the button horizontally */
+      padding: 10px 20px;
+      background-color: #161623;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .card a:hover {
+      background-color: #DC143C;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      /* Lift the card when hovered */
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+      /* Increase shadow on hover */
+      filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.8));
+      /* Add a pink glow effect */
+    }
+
+
+
+
+
+    .cardds {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #161623;
+    }
+
+    .cardds::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(#929b84, #397266);
+      clip-path: circle(30% at right 70%);
+    }
+
+    .cardds::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(#929b84, #397266);
+      clip-path: circle(20% at 10% 10%);
+    }
+
+    .containerr {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      justify-content: center;
+      max-width: 1200px;
+      flex-wrap: wrap;
+      z-index: 1;
+      padding: 20px;
+    }
+
+    .containerr .cardd {
+      position: relative;
+      width: 360px;
+      height: 500px;
+      margin: 30px;
+      box-shadow: 20px 20px 50px rgba(0, 0, 0, .5);
+      border-radius: 15px;
+      background: rgba(255, 255, 255, .1);
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, .5);
+      border-left: 1px solid rgba(255, 255, 255, .5);
+      backdrop-filter: blur(5px);
+    }
+
+    .containerr .cardd .contt {
+      padding: 20px;
+      text-align: center;
+      transform: translateY(20px);
+      opacity: 1;
+      transition: 0.5s;
+
+    }
+
+    .containerr .cardd:hover .contt {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+
+    .containerr .cardd .contt h2 {
+      position: absolute;
+      top: -80px;
+      right: 30px;
+      font-size: 8em;
+      color: rgba(255, 255, 255, .05);
+      pointer-events: none;
+    }
+
+    .cardd img {
+      width: 100%;
+      /* Image takes full width of the card */
+      height: 100;
+      /* Maintain aspect ratio */
+      object-fit: cover;
+      /* Cover the container while maintaining aspect ratio */
+      display: block;
+      /* Remove bottom space */
+    }
+
+    .containerr .cardd .contt h3 {
+      font-size: 1.8em;
+      color: #fff;
+      z-index: 1;
+    }
+
+    .containerr .cardd .contt p {
+      font-size: 1em;
+      color: #FFF;
+      font-weight: 300;
+    }
+
+    footer {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      background: #043035;
+      
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer p {
+      color: #fff;
+      max-width: 25em;
+      font-size: 0.9em;
+      line-height: 23px;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    footer .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2em;
+    }
+
+    .footer .footer-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 2em;
+    }
+
+    .brand {
+      display: block;
+      font-size: 1.8em;
+      font-weight: 600;
+      margin-bottom: 1em;
+    }
+
+    .media-icons li,
+    .services-icons li {
+      display: inline-block;
+      margin: 0.5em 0.5em 0.5em 0;
+    }
+
+    .media-icons a {
+      font-size: 1.1em;
+      width: 2em;
+      height: 2em;
+      border: 1px #fff solid;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.3s;
+    }
+
+    .media-icons a:hover {
+      background: #fff;
+      color: #111;
+    }
+
+    .services-icons a {
+      font-size: 1.6em;
+    }
+
+    .services-icons a:hover {
+      color: #94fbab;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: center;
+      border-top: 1px solid rgba(138, 208, 153, 0.36);
+      padding: 2em;
+    }
+
+    .footer .footer-menu {
+      margin-bottom: 1em;
+    }
+
+    .footer .footer-menu li {
+      display: inline-block;
+      margin: 0 0.7em 0.7em 0;
+      text-align: center;
+    }
+
+    .footer .footer-menu a {
+      transition: 0.3s;
+      font-weight: 600;
+    }
+
+    .footer .footer-menu a:hover {
+      color: #94fbab;
+    }
+
+    .input-wrap {
+      margin: 1em 0;
+      display: flex;
+    }
+
+    .input-wrap input {
+      padding: 0.5em;
+      border: none;
+      background: #20232a;
+      color: #ccc;
+    }
+
+    .input-wrap input:focus {
+      outline: none;
+    }
+
+    .input-wrap a {
+      padding: 0.8em;
+      background: #94fbab;
+      border: none;
+      color: #217634;
+      transition: 0.3s;
+    }
+
+    .input-wrap button:hover {
+      background: #fff;
+      color: #111;
+    }
+
+    @media screen and (max-width: 900px) {
+      .footer .container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="logo-container">
+      <img src="{% static 'images/aissms_bg.png' %}" alt="Logo">
+    </div>
+    <div class="menu">
+      <a class="bits-bytes" href="/">Bits&Bytes<span></span></a>
+      <a href="#dev">Our Team<span></span></a>
+
+    </div>
+  </nav>
+  <div></div>
+
+
+  <div class="card-container">
+    <!-- First Row (Two cards side by side) -->
+    <div class="row">
+      <div class="card" onmouseover="playVideo(this)" onmouseout="pauseVideo(this)">
+        <img src="{% static 'images/vrrr.jpg' %}" alt="Image 1">
+        <video loop muted>
+          <source src="{% static 'videos/vr_vid.mp4' %}" type="video/mp4">
+        </video>
+        <a href="{% url 'vr_home' %}">CLICK HERE</a>
+      </div>
+      <div class="card" onmouseover="playVideo(this)" onmouseout="pauseVideo(this)">
+        <img src="{% static 'images/bgmiii.jpg' %}" alt="Image 2">
+        <video loop muted>
+          <source src="{% static 'videos/bgmi_vid.mp4' %}" type="video/mp4">
+        </video>
+        <a href="{% url 'bgmi_home' %}">CLICK HERE</a>
+      </div>
     </div>
 
-    <script>
-        function playVideo(card) {
-            var video = card.querySelector('video');
-            video.play();
-        }
+    <!-- Second Row (One centered card) -->
+    <div class="row" style="justify-content: center;">
+      <div class="card" onmouseover="playVideo(this)" onmouseout="pauseVideo(this)">
+        <img src="{% static 'images/thunttt.jpg' %}" alt="Image 3">
+        <video loop muted>
+          <source src="{% static 'videos/th_vid.mp4' %}" type="video/mp4">
+        </video>
+        <a href="{% url 'th_home' %}">CLICK HERE</a>
+      </div>
+    </div>
+  </div>
+  <section class="cardds" id="dev">
+    <div class="containerr">
+      <div class="cardd">
+        <div class="contt">
+          <!-- <h2>01</h2> -->
+          <h3>JAYAANMOL SHAH</h3>
+          <img src="{% static 'images/vrr_img/jaya.jpg' %}" alt="Jaya">
+          <p>Backend Dev</p>
+          <!-- <a href="#">Read More</a> -->
+        </div>
+      </div>
+      <div class="cardd">
+        <div class="contt">
 
-        function pauseVideo(card) {
-            var video = card.querySelector('video');
-            video.pause();
-        }
-    </script>
+          <!-- <h2>02</h2> -->
+          <h3>POORVA SHINDE</h3>
+          <img src="{% static 'images/vrr_img/proova.jpeg' %}" alt="Poorva">
+          <p>Frontend Dev</p>
+          <!-- <a href="#">Read More</a> -->
+        </div>
+      </div>
+      <div class="cardd">
+        <div class="contt">
+          <h2>03</h2>
+          <h3>SHRAVANI TAMBE</h3>
+          <img src="{% static 'images/vrr_img/shravani.jpg' %}" alt="Shravani">
+          <p>Frontend Dev</p>
+          <!-- <a href="#">Read More</a> -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    function playVideo(card) {
+      var video = card.querySelector('video');
+      video.play();
+    }
+
+    function pauseVideo(card) {
+      var video = card.querySelector('video');
+      video.pause();
+    }
+  </script>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="col1">
+        <a href="#" class="brand" target="_black"></a>
+        <ul class="media-icons">
+          <li>
+            <a href="https://www.instagram.com/aissms_coe/?hl=en" target="_black"><i
+                class="fa-brands fa-instagram"></i></a>
+          </li>
+          <li>
+            <a href="https://in.linkedin.com/school/aissms-coe/" target="_black"><i
+                class="fa-brands fa-linkedin"></i></a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/@aissmscollegeofengineering2566" target="_black"><i
+                class="fa-brands fa-youtube"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="col2">
+        <ul class="footer-menu">
+          <li><a href="/" target="_black">Home</a></li>
+          <li><a href="{% url 'vr_home' %}" target="_black">VR</a></li>
+          <li><a href="{% url 'bgmi_home' %}" target="_black">BGMI</a></li>
+          <li><a href="{% url 'th_home' %}" target="_black">TREASURE HUNT</a></li>
+          <li>
+            <a href="https://aissmscoe.com/" target="_black">AISSMS COE</a>
+          </li>
+          <p>
+            <br />
+            Address: No. 1, Kennedy Road, Near RTO Office Sangamvadi,
+            Shivajinagar, Pune, Maharashtra 411001
+          </p>
+        </ul>
+      </div>
+      <div class="col3">
+        <p>Registrations now open!</p>
+        <form>
+          <div class="input-wrap">
+            <a class="fa-solid fa-paper-plane" href="https://aissmscoe.akronsystems.com/CoeWorkShop.aspx" id="clg-form"
+              target="_black"></a>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="mekk">
+        <p>@Bits&Bytes 2024 - All Rights Reserved</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- <script src="{% static 'js/vr2.js' %}"></script> -->
+  <script>
+    VanillaTilt.init(document.querySelectorAll(".card"), {
+      max: 25,
+      speed: 400,
+      glare: true,
+      "max-glare": 1,
+
+    });
+  </script>
 </body>
+
 </html>

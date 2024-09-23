@@ -3,25 +3,25 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="score.css" />
-    <title>Scoreboard</title>
+    <title>BGMI Scoreboard</title>
     <style>
+        @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #023036, #06063a);
-            /* Smooth blue-green gradient */
+            background: linear-gradient(100deg, #6ba89e, #040425dc, rgb(74, 184, 198));
+            background-size: cover;
+            height: 100vh;
             color: #333;
         }
 
         * {
             margin: 0;
             padding: 0;
-
         }
-
-
 
         .nav {
             position: fixed;
@@ -34,7 +34,6 @@
             z-index: 9999;
             backdrop-filter: blur(5px);
             /* Adjust the blur radius */
-
         }
 
         .nav {
@@ -51,7 +50,6 @@
             position: relative;
             text-decoration: none;
             color: #6ef;
-            ;
             padding: 6px 15px;
             border-radius: 20px;
             margin: 0 10px;
@@ -64,7 +62,6 @@
             background-color: #5e7ab7;
             color: #fff;
         }
-
 
         a {
             text-decoration: none;
@@ -88,8 +85,6 @@
             color: white;
         }
 
-
-
         .leaderboard {
             display: flex;
             justify-content: space-around;
@@ -97,7 +92,7 @@
         }
 
         .leader {
-            background: url('{% static "images/vrr_img/scorecover.png" %}') no-repeat center center;
+            background: url("{% static 'images/scorecover.png ' %}") no-repeat center center;
             /* Center the background */
             background-size: cover;
             /* Cover the entire div */
@@ -113,17 +108,22 @@
             height: 300px;
         }
 
-        
+        /* border: 2px solid #6ef; /* Highlighted border */
+        /* backdrop-filter: blur(10px); /* Apply background blur */
+        /* position: relative; Required for the pseudo-element */
         */ */ .leader::after {
-            content: '';
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            
+            /* border-radius: 10px; /* Match the border radius */
+            /* border: 2px solid #6ef; Highlighted border */
+            /* opacity: 0.5; Adjust opacity for illumination */
+            /* filter: blur(5px); Add blur to the border */
+            /* z-index: -1; Send it behind the leader content */
         }
-
 
         .leader h2 {
             font-size: 24px;
@@ -158,11 +158,14 @@
             /* Adds a subtle shadow */
         }
 
-        table,
-        th,
-        td {
-            border: 2px solid #6ef;
-            /* Highlighted border color */
+        table {
+            /*background: linear-gradient(
+    to right,
+    gray,
+    black,
+    0.2
+  ); Highlighted border color */
+            backdrop-filter: grayscale(30%);
         }
 
         th,
@@ -176,60 +179,68 @@
             background-color: rgba(255, 255, 255, 0.2);
             /* Slightly translucent header */
         }
+
+        .heading {
+            font-size: 50px;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 900;
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 5%;
+            color: #fff;
+        }
+
+        .items-left {
+            margin-left: 20px;
+        }
     </style>
 </head>
 
 <body>
     <div class="nav">
         <div class="items-left">
-           
+            <h1 class="logo">Battlefield Arena</h1>
         </div>
         <div class="items-right">
-            <a href="{% url 'vr_home' %}">home</a>
-            <a href="https://forms.gle/fTVdVnVRrmaabqu66" target="_blank">register</a>
-            <a href="{% url 'vr_home' %}#rules-section">rules</a>
+            <a href="#">home</a>
+            <a href="#">register</a>
+            <a href="#">rules</a>
         </div>
     </div>
     <div class="logo-container">
-        <h1 class="logo">Virtual Odyssey</h1>
+        
     </div>
 
-    <!-- Top 3 Leaders -->
-    <div class="leaderboard">
-        {% for player in players|slice:":3" %}
-        <div class="leader">
-            
-            <h2>{{ forloop.counter }}. {{ player.Name }}</h2>
-            <p>Score: {{ player.Score }}</p>
-            <img style="width: 250px; height: 140px;" src="{{ player.Avatar}}" alt="{{ player.Name }}" width="50" height="50">
-        </div>
-        {% endfor %}
-    </div>
+    
+    <!-- ALL Players in a Table -->
 
-    <!-- Remaining Players in a Table -->
+    <h1 class="heading">Overall Standings</h1>
     <table>
         <thead>
             <tr>
                 <th>Rank</th>
                 <th>Avatar</th>
-                <th>Name</th>
-                <th>Score</th>
-                <th>Time</th>
+                <th>Team Name</th>
+                <th>FP</th>
+                <th>PP</th>
+                <th>TP</th>
             </tr>
         </thead>
         <tbody>
             {% for player in players|slice:"3:" %}
             <tr>
-                <td>{{ forloop.counter|add:3 }}</td>
+                <td>{{ player.Rank }}</td>
                 <td><img src="{{ player.Avatar}}" alt="{{ player.Name }}" width="50" height="50"></td>
                 <td>{{ player.Name }}</td>
-                <td>{{ player.Score }}</td>
-                <td>{{ player.Time }}</td>
+                <td>{{ player.FP }}</td>
+                <td>{{ player.PP }}</td>
+                <td>{{ player.TP }}</td>
             </tr>
             {% endfor %}
+            
+            <!-- Add more players as needed -->
         </tbody>
     </table>
-
 </body>
 
 </html>
