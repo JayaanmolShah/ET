@@ -1,110 +1,51 @@
-// const imgSlider = document.querySelector(".img-slider");
-// const imgFruits = document.querySelectorAll(".img-item.fruit");
-// const infoSlider = document.querySelector(".info-slider");
-// const infoItems = document.querySelectorAll(".info-item");
-// const bgs = document.querySelectorAll(".bg");
-// const carousel = document.querySelector(".carousel");
-
-// const nextBtn = document.querySelector(".next-btn");
-// const prevBtn = document.querySelector(".prev-btn");
-// let currentSlide = 0;
-// let index =0;
-// const slides = document.querySelectorAll('.img-item.fruit');
-// const totalSlides = slides.length;
-
-// document.querySelector('.next-btn').addEventListener('click', () => {
-//     changeSlide(1);
-// });
-
-// document.querySelector('.prev-btn').addEventListener('click', () => {
-//     changeSlide(-1);
-// });
-
-// function changeSlide(direction) {
-//     slides[currentSlide].classList.remove('active');
-//     currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-//     slides[currentSlide].classList.add('active');
-// }
+var textWrapper = document.querySelector(".title");
+textWrapper.innerHTML = textWrapper.textContent.replace(
+  /\S/g,
+  "<span class='letter'>$&</span>"
+);
 
 
-// let index = 0;
-// let direction = 0;
 
-// function updateActiveItems() {
-//   imgFruits.forEach((item, i) => {
-//     item.classList.toggle("active", i === index);
-//   });
+TweenMax.to(".box", 2.4, {
+  y: "-100%",
+  ease: Expo.easeInOut,
+  delay: 1,
+});
 
-//   bgs.forEach((bg, i) => {
-//     bg.classList.toggle("active", i === index);
-//   });
+TweenMax.from("img", 0, {
+  scale: "2",
+  ease: Expo.easeInOut,
+  delay: 0,
+});
 
-//   infoItems.forEach((item, i) => {
-//     if (i === index) {
-//       item.style.opacity = 0;
-//       item.style.display = "flex";
+TweenMax.to(".wrapper-img", 2.4, {
+  width: "400",
+  height: "500",
+  ease: Expo.easeInOut,
+  delay: 3.6,
+});
 
-//       item.offsetHeight;
-//       item.style.transition = "opacity 0.5s ease-in-out";
-//       item.style.opacity = 1;
-//     } else {
-//       item.style.opacity = 0;
-//       setTimeout(() => {
-//         item.style.display = "none";
-//       }, 500);
-//     }
-//   });
+TweenMax.from(".img", 0.4, {
+  opacity: 0,
+  ease: Expo.easeInOut,
+  delay: 3.4,
+});
 
-//   const activeBg = bgs[index];
-//   const activeBgStyle = getComputedStyle(activeBg);
-//   carousel.style.backgroundImage = activeBgStyle.backgroundImage;
-// }
+TweenMax.to(".left", 2, {
+  x: "-400",
+  rotation: -10,
+  ease: Expo.easeInOut,
+  delay: 3.8,
+});
 
-// function handleTransition() {
-//   infoSlider.style.transition =
-//     "transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1)";
-//   infoSlider.style.transform = `translateY(${direction * 25}%)`;
+TweenMax.to(".right", 2, {
+  x: "100",
+  rotation: 10,
+  ease: Expo.easeInOut,
+  delay: 3.8,
+});
 
-//   setTimeout(() => {
-//     infoSlider.style.transition = "none";
-//     infoSlider.style.transform = "translateY(0%)";
-//   }, 500);
-// }
-
-// function updateCarousel() {
-//   imgSlider.style.transform = `rotate(${index * -90}deg)`;
-//   updateActiveItems();
-//   handleTransition();
-// }
-
-// function changeIndex(step) {
-//   index += step;
-//   if (index < 0) {
-//     index = imgFruits.length - 1;
-//   } else if (index >= imgFruits.length) {
-//     index = 0;
-//   }
-
-//   updateCarousel();
-// }
-
-// nextBtn.addEventListener("click", () => {
-//   changeIndex(1);
-// });
-
-// prevBtn.addEventListener("click", () => {
-//   changeIndex(-1);
-// });
-
-// updateCarousel();
-
-// infoSlider.addEventListener("transitionend", () => {
-//   if (direction === -1) {
-//     infoSlider.appendChild(infoSlider.firstElementChild);
-//   } else if (direction === 1) {
-//     infoSlider.prepend(infoSlider.lastElementChild);
-//   }
-// });
+/*CAROUSEL CODE*/
 
 const imgSlider = document.querySelector(".img-slider");
 const imgFruits = document.querySelectorAll(".img-item.fruit");
@@ -115,39 +56,9 @@ const carousel = document.querySelector(".carousel");
 
 const nextBtn = document.querySelector(".next-btn");
 const prevBtn = document.querySelector(".prev-btn");
-let currentSlide = 0;
+
 let index = 0;
-const totalSlides = imgFruits.length;
-
-
-
-// Function to update the slide position
-function updateSliderPosition() {
-  const sliderWidth = imgFruits[0].clientWidth;
-  imgSlider.style.transform = `translateX(${-currentSlide * sliderWidth}px)`;
-}
-
-// Event listener for next button
-nextBtn.addEventListener('click', () => {
-  currentSlide = (currentSlide + 1) % totalSlides; // Loop back to the first slide
-  updateSliderPosition();
-});
-
-// Event listener for previous button
-prevBtn.addEventListener('click', () => {
-  currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; // Loop to the last slide
-  updateSliderPosition();
-});
-
-// Initial setup
-updateSliderPosition();
-
-// Consolidate both changeSlide and changeIndex into one function
-function changeSlide(step) {
-  currentSlide = (currentSlide + step + totalSlides) % totalSlides;
-  index = currentSlide;
-  updateCarousel(step);
-}
+let direction = 0;
 
 function updateActiveItems() {
   imgFruits.forEach((item, i) => {
@@ -163,7 +74,6 @@ function updateActiveItems() {
       item.style.opacity = 0;
       item.style.display = "flex";
 
-      // Trigger reflow for transition
       item.offsetHeight;
       item.style.transition = "opacity 0.5s ease-in-out";
       item.style.opacity = 1;
@@ -180,9 +90,9 @@ function updateActiveItems() {
   carousel.style.backgroundImage = activeBgStyle.backgroundImage;
 }
 
-function handleTransition(step) {
-  const direction = step > 0 ? -1 : 1; // Adjust direction based on step
-  infoSlider.style.transition = "transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1)";
+function handleTransition() {
+  infoSlider.style.transition =
+    "transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1)";
   infoSlider.style.transform = `translateY(${direction * 25}%)`;
 
   setTimeout(() => {
@@ -191,23 +101,32 @@ function handleTransition(step) {
   }, 500);
 }
 
-function updateCarousel(step) {
-  imgSlider.style.transform = `rotate(${index * -90}deg)`; // Rotate the slider for visual effect
+function updateCarousel() {
+  imgSlider.style.transform = `rotate(${index * -90}deg)`;
   updateActiveItems();
-  handleTransition(step);
+  handleTransition();
 }
 
-// Event listeners for buttons
+function changeIndex(step) {
+  index += step;
+  if (index < 0) {
+    index = imgFruits.length - 1;
+  } else if (index >= imgFruits.length) {
+    index = 0;
+  }
+
+  updateCarousel();
+}
+
 nextBtn.addEventListener("click", () => {
-  changeSlide(1);
+  changeIndex(1);
 });
 
 prevBtn.addEventListener("click", () => {
-  changeSlide(-1);
+  changeIndex(-1);
 });
 
-// Initialize the carousel
-updateCarousel(0);
+updateCarousel();
 
 infoSlider.addEventListener("transitionend", () => {
   if (direction === -1) {
@@ -217,96 +136,158 @@ infoSlider.addEventListener("transitionend", () => {
   }
 });
 
+/*MENU CODE*/
 
+document.addEventListener("DOMContentLoaded", function () {
+  let tl = gsap.timeline({ paused: true });
+  tl.to(".menu-overlay", {
+    duration: 1,
+    clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+    ease: "power2.out",
+  });
 
+  tl.from(
+    ".menu-link, .btn",
+    {
+      opacity: 0,
+      y: 60,
+      stagger: 0.05,
+      duration: 0.75,
+      ease: "power1.inOut",
+    },
+    "<"
+  );
 
+  tl.to(
+    ".video-preview",
+    {
+      duration: 1,
+      height: "200px",
+      ease: "power2.out",
+    },
+    "<"
+  );
 
+  tl.to(
+    ".menu-divider",
+    {
+      duration: 2,
+      width: "100%",
+      ease: "power4.out",
+    },
+    "<"
+  );
 
-// const imgSlider = document.querySelector(".img-slider");
-// const imgFruits = document.querySelectorAll(".img-item.fruit");
-// const infoSlider = document.querySelector(".info-slider");
-// const infoItems = document.querySelectorAll(".info-item");
-// const bgs = document.querySelectorAll(".bg");
-// const carousel = document.querySelector(".carousel");
+  function openMenu() {
+    document.querySelector(".menu-overlay").style.pointerEvents = "all";
+    tl.play();
+  }
 
-// const nextBtn = document.querySelector(".next-btn");
-// const prevBtn = document.querySelector(".prev-btn");
+  function closeMenu() {
+    document.querySelector(".menu-overlay").style.pointerEvents = "none";
+    tl.reverse();
+  }
 
-// let index = 0;
-// let direction = 0;
+  document.querySelector(".menu-open-btn").addEventListener("click", openMenu);
 
-// function updateActiveItems() {
-//   imgFruits.forEach((item, i) => {
-//     item.classList.toggle("active", i === index);
-//   });
+  document
+    .querySelector(".menu-close-btn")
+    .addEventListener("click", closeMenu);
 
-//   bgs.forEach((bg, i) => {
-//     bg.classList.toggle("active", i === index);
-//   });
+  tl.reverse();
+});
 
-//   infoItems.forEach((item, i) => {
-//     if (i === index) {
-//       item.style.opacity = 0;
-//       item.style.display = "flex";
+/*RULEBOOK CODE*/
 
-//       item.offsetHeight;
-//       item.style.transition = "opacity 0.5s ease-in-out";
-//       item.style.opacity = 1;
-//     } else {
-//       item.style.opacity = 0;
-//       setTimeout(() => {
-//         item.style.display = "none";
-//       }, 500);
-//     }
-//   });
+const allcontainer = gsap.utils.toArray(".container-item");
+const venueImageWrap = document.querySelector(".container-img-wrap");
+const venueImage = document.querySelector(".container-img");
 
-//   const activeBg = bgs[index];
-//   const activeBgStyle = getComputedStyle(activeBg);
-//   carousel.style.backgroundImage = activeBgStyle.backgroundImage;
-// }
+function initcontainer() {
+  allcontainer.forEach((link) => {
+    link.addEventListener("mouseenter", venueHover);
+    link.addEventListener("mouseleave", venueHover);
+    link.addEventListener("mousemove", moveVenueImage);
+  });
+}
 
-// function handleTransition() {
-//   infoSlider.style.transition =
-//     "transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1)";
-//   infoSlider.style.transform = `translateY(${direction * 25}%)`;
+function moveVenueImage(e) {
+  let xpos = e.clientX;
+  let ypos = e.clientY;
+  const tl = gsap.timeline();
+  tl.to(venueImageWrap, {
+    x: xpos,
+    y: ypos,
+  });
+}
 
-//   setTimeout(() => {
-//     infoSlider.style.transition = "none";
-//     infoSlider.style.transform = "translateY(0%)";
-//   }, 500);
-// }
+function venueHover(e) {
+  if (e.type === "mouseenter") {
+    const targetImage = e.target.dataset.img;
 
-// function updateCarousel() {
-//   imgSlider.style.transform = `rotate(${index * -90}deg)`;
-//   updateActiveItems();
-//   handleTransition();
-// }
+    const tl = gsap.timeline();
+    tl.set(venueImage, {
+      backgroundImage: `url(${targetImage})`,
+    }).to(venueImageWrap, {
+      duration: 0.5,
+      autoAlpha: 1,
+    });
+  } else if (e.type === "mouseleave") {
+    const tl = gsap.timeline();
+    tl.to(venueImageWrap, {
+      duration: 0.5,
+      autoAlpha: 0,
+    });
+  }
+}
 
-// function changeIndex(step) {
-//   index += step;
-//   if (index < 0) {
-//     index = imgFruits.length - 1;
-//   } else if (index >= imgFruits.length) {
-//     index = 0;
-//   }
+function init() {
+  initcontainer();
+}
 
-//   updateCarousel();
-// }
+window.addEventListener("load", function () {
+  init();
+});
 
-// nextBtn.addEventListener("click", () => {
-//   changeIndex(1);
-// });
+tl = new TimelineMax();
 
-// prevBtn.addEventListener("click", () => {
-//   changeIndex(-1);
-// });
+tl.from(".navbar > div", 1.6, {
+  opacity: 0,
+  y: 60,
+  ease: Expo.easeInOut,
+  delay: 0.6,
+});
 
-// updateCarousel();
+tl.from(
+  ".site-logo",
+  1.6,
+  {
+    opacity: 0,
+    y: 40,
+    ease: Expo.easeInOut,
+  },
+  "-=1.6"
+);
 
-// infoSlider.addEventListener("transitionend", () => {
-//   if (direction === -1) {
-//     infoSlider.appendChild(infoSlider.firstElementChild);
-//   } else if (direction === 1) {
-//     infoSlider.prepend(infoSlider.lastElementChild);
-//   }
-// });
+tl.staggerFrom(
+  ".site-menu > div",
+  1,
+  {
+    opacity: 0,
+    y: 60,
+    ease: Power2.easeOut,
+  },
+  0.2
+);
+
+tl.staggerFrom(
+  ".header > div",
+  1,
+  {
+    opacity: 0,
+    y: 60,
+    ease: Power2.easeOut,
+    delay: -1.4,
+  },
+  0.2
+);

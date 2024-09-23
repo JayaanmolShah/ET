@@ -1,149 +1,202 @@
-window.onload = function () {
-  window.addEventListener("scroll", function (e) {
-    let s = this.scrollY;
-    let w = this.outerWidth;
-    let h = document.getElementsByClassName("paralax")[0].clientWidth;
-    let h_b = document.getElementsByClassName("container")[0].clientWidth;
-    let p = (s / h) * 100;
-    let p_b = (s / h_b) * 100;
-    let opas = 1 - (1 / 100) * p_b;
-    let z_1 = 1 + (w / 10000) * p_b;
+const spotlight = document.querySelector(".spotlight");
+const overlay = document.querySelector(".overlay");
+const toggleButton = document.getElementById("toggleOverlay");
 
+let scrollAmmount = 0;
+let yPos = 0;
+let xPos = 0;
 
-    document.getElementsByClassName(
-      "p-item4"
-    )[0].style = `transform: scale(${z_1});opacity: ${opas}`;
+spotlight.addEventListener("mousemove", handleMoveEvent);
+spotlight.addEventListener("touchmove", handleMoveEvent);
+toggleButton.addEventListener("click", toggleOverlayVisibility);
 
-
-    let z_2 = 1 + (w / 5000000) * p;
-
-
-    document.getElementsByClassName(
-      "p-item1"
-    )[0].style = `transform: scale(${z_2})`;
-
-
-    let hr = (w / 2000) * p_b;
-    let z_3 = 1 + w * 0.000005 * p_b;
-
-
-    document.getElementsByClassName(
-      "p-item2"
-    )[0].style = `transform: translate3d(${hr}px,0,0) scale(${z_3})`;
-
-
-    let hr_2 = (w / 1500) * p_b;
-    let z_4 = 1 + w * 0.00001 * p_b;
-    document.getElementsByClassName(
-      "p-item3"
-    )[0].style = `transform: translate3d(${hr_2}px,0,0) scale(${z_4})`;
-  });
-};
-
-
-
-
-
-
-
-
-
-
-const imgSlider = document.querySelector(".img-slider");
-const imgFruits = document.querySelectorAll(".img-item.fruit");
-const infoSlider = document.querySelector(".info-slider");
-const infoItems = document.querySelectorAll(".info-item");
-const bgs = document.querySelectorAll(".bg");
-const carousel = document.querySelector(".carousel");
-
-const nextBtn = document.querySelector(".next-btn");
-const prevBtn = document.querySelector(".prev-btn");
-
-let index = 0;
-let direction = 0;
-
-function updateActiveItems() {
-  imgFruits.forEach((item, i) => {
-    item.classList.toggle("active", i === index);
-  });
-
-  bgs.forEach((bg, i) => {
-    bg.classList.toggle("active", i === index);
-  });
-
-  infoItems.forEach((item, i) => {
-    if (i === index) {
-      item.style.opacity = 0;
-      item.style.display = "flex";
-
-      item.offsetHeight;
-      item.style.transition = "opacity 0.5s ease-in-out";
-      item.style.opacity = 1;
+window.addEventListener('scroll', (event) => {
+    if (window.scrollY >= 250) {
+        toggleButton.classList.add('lights-hidden');
+        toggleButton.classList.remove('lights');
     } else {
-      item.style.opacity = 0;
-      setTimeout(() => {
-        item.style.display = "none";
-      }, 500);
+        toggleButton.classList.remove('lights-hidden');
+        toggleButton.classList.add('lights');
     }
-  });
+})
 
-  const activeBg = bgs[index];
-  const activeBgStyle = getComputedStyle(activeBg);
-  carousel.style.backgroundImage = activeBgStyle.backgroundImage;
+function handleMoveEvent(e) {
+    // if (!overlayVisible) return; // Prevent movement if overlay is hidden
+
+    const clientX = e.clientX || e.touches[0].clientX;
+    const clientY = e.clientY || e.touches[0].clientY;
+
+    setTimeout(() => {
+        yPos = clientY - overlay.offsetHeight / 2;
+        xPos = clientX - overlay.offsetWidth / 2;
+
+        // If you want to use scroll position, ensure it's handled correctly
+        scrollAmmount = overlay.scrollTop + yPos;
+
+        // Use backticks for string interpolation
+        overlay.style.top = `${scrollAmmount}px`;
+        overlay.style.left = `${xPos}px`;
+    }, 100);
 }
 
-function handleTransition() {
-  const infoSlider = document.querySelector('.info-slider'); // Assuming you need to select the slider element
-
-  // Set the transition and transform styles
-  infoSlider.style.transition = "transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1)";
-  infoSlider.style.transform = `translateY(${direction * 25}%)`;
-
-  // Reset the transition and transform styles after the transition ends
-  setTimeout(() => {
-    infoSlider.style.transition = "none";
-    infoSlider.style.transform = "translateY(0%)";
-  }, 500);
-}
-
-
-function updateCarousel() {
-  const imgSlider = document.querySelector('.img-slider'); // Assuming you need to select the imgSlider element
-
-  // Apply the rotation and update styles
-  imgSlider.style.transform = `rotate(${index * -90}deg)`;
-
-  // Call other functions to update the carousel
-  updateActiveItems();
-  handleTransition();
+function toggleOverlayVisibility() {
+    if (overlay.classList.contains("hidden")) {
+        overlay.classList.remove("hidden");
+    } else {
+        overlay.classList.add("hidden");
+    }
 }
 
 
-function changeIndex(step) {
-  index += step;
-  if (index < 0) {
-    index = imgFruits.length - 1;
-  } else if (index >= imgFruits.length) {
-    index = 0;
-  }
+const output = document.querySelector(".output");
 
-  updateCarousel();
+// Define colors array to match the words array
+const colors = [
+    "#0c1c34", // Color for "Full Stack Developer"
+    "#0c1c34", // Color for "Full Stack Developer"
+    "#0c1c34", // Color for "Full Stack Developer"
+];
+
+let typeSpeed = 100; // Speed of typing
+let removeSpeed = 100; // Speed of removing
+
+let id = 0; // Index of the current word
+let charCount = 0; // Number of characters typed/removed
+
+function type() {
+    let res = words[id].substr(0, charCount);
+    output.style.color = colors[id]; // Set color based on current word
+
+    if (charCount >= words[id].length + 3) { // +3 for pause before removing
+        clearInterval(time);
+        charCount = 1;
+        time = setInterval(remove, removeSpeed); // Start removing
+    }
+    output.innerHTML = res;
+    charCount++;
 }
 
-nextBtn.addEventListener("click", () => {
-  changeIndex(1);
+function remove() {
+    let res = words[id].substr(0, words[id].length - charCount);
+
+    if (res.length <= 0) { // If the word is fully removed
+        id = (id >= words.length - 1) ? 0 : id + 1; // Move to the next word or loop back to start
+        clearInterval(time);
+        charCount = 0;
+        time = setInterval(type, typeSpeed); // Start typing the new word
+    }
+    output.innerHTML = res;
+    charCount++;
+}
+
+// Define words array
+const words = [
+    "IMMERSE\xa0VR",
+    "EXPLORE\xa0VR",
+    "EXPERIENCE\xa0VR",
+];
+
+// Start typing animation
+let time = setInterval(type, typeSpeed);
+
+
+const panels = document.querySelectorAll(".panel");
+const panelsContainer = document.querySelector(".panels");
+const descriptions = document.querySelectorAll(".description > div");
+const backBtn = document.querySelector(".back-btn");
+
+// Add mouse enter and leave events to panels
+panels.forEach(panel => {
+    panel.addEventListener("mouseenter", () => {
+        panels.forEach(p => p.classList.add("panel-inactive"));
+        panel.classList.remove("panel-inactive");
+    });
+
+    panel.addEventListener("mouseleave", () => {
+        panels.forEach(p => p.classList.remove("panel-inactive"));
+    });
 });
 
-prevBtn.addEventListener("click", () => {
-  changeIndex(-1);
+// Add click events to panels
+panels.forEach((panel, i) => {
+    panel.addEventListener("click", () => {
+        panels.forEach(p => {
+            p.classList.add("panel-hidden");
+        });
+
+        setTimeout(() => {
+            panels.forEach(p => {
+                p.style.display = "none";
+            });
+
+            panel.classList.remove("panel-hidden");
+            panel.style.display = "flex";
+            panel.classList.add("panel-active");
+            panelsContainer.style.display = "block";
+
+            descriptions.forEach(d => d.classList.remove("description-active"));
+            descriptions[i].classList.add("description-active");
+            backBtn.style.display = "block";
+        }, 400);
+    });
 });
 
-updateCarousel();
+// Add click event to back button
+backBtn.addEventListener("click", () => {
+    panels.forEach(panel => {
+        panel.classList.remove("panel-hidden");
+        panel.classList.remove("panel-active");
+        panel.style.display = "flex"; // Show all panels
 
-infoSlider.addEventListener("transitionend", () => {
-  if (direction === -1) {
-    infoSlider.appendChild(infoSlider.firstElementChild);
-  } else if (direction === 1) {
-    infoSlider.prepend(infoSlider.lastElementChild);
-  }
+        descriptions.forEach(description => description.classList.remove("description-active"));
+        backBtn.style.display = "none";
+    });
+
+    panelsContainer.style.display = "grid"; // Adjust container display if needed
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ScrollTrigger.create({
+    animation: gsap.from(".logo",{
+        y:"50vh",
+        scale: 6,
+        yPercent:-50,
+    }),
+    scrub: true,
+    trigger: ".pages",
+    start: "top bottom",
+    endTrigger: ".pages",
+    end:"top center",
+});
+
+
+
+
+
+
+const bgAnimation = document.getElementById('bgAnimation');
+
+const numberOfColorBoxes = 400;
+
+for (let i = 0; i < numberOfColorBoxes; i++) {
+    const colorBox = document.createElement('div');
+    colorBox.classList.add('colorBox');
+    bgAnimation.append(colorBox)
+}
+
