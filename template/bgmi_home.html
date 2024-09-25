@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 {% load static %}
 <html lang="en">
   <head>
@@ -1241,7 +1241,99 @@ footer .footer-container {
   }
 }
 
+section {
+  background: linear-gradient(300deg, #003c43, #2a645e, #9ad0c2);
+  background-size: 240% 240%;
+  animation: gradient-animation 24s ease infinite;
+  font-family: "Times New Roman", Times, serif;
+  height: 270vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
 
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.wrapper {
+  font-family: "Times New Roman", Times, serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1000px;
+  margin: 40px auto;
+}
+
+.rules-header {
+  text-align: center;
+  font-size: 50px;
+  font-weight: 500;
+  color: #e9f7f3;
+  margin-bottom: 30px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin: 0 20px;
+}
+
+.service-box {
+  background: linear-gradient(135deg, #d4ebe3, #bbdbd0, #a5cdbf, #8abcaa);
+  padding: 15px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-height: 180px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(241, 250, 218, 0.4);
+}
+
+.icon {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #003c43;
+  margin-bottom: 10px;
+}
+
+.service-box h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.service-box p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
     </style>
   </head>
   <body>
@@ -1407,115 +1499,135 @@ footer .footer-container {
     </div>
 
     <section>
-      <div class="wrapper" id="rulebook">
-        <div class="top-section">
-          <div class="header">
-            <div class="header-left">BGMI Rulebook</div>
+      <div class="wrapper">
+        <h1 class="rules-header">Battlefield Arena Rules</h1>
+        <div class="services-grid">
+          <div class="service-box">
+            <div class="icon">1</div>
+            <h3 class="rules-title">Team Members</h3>
+            <p class="rules-body">
+              Each team should have 4 members at all times during the
+              competition.
+            </p>
           </div>
-
-          <div class="container">
-            <div class="container-items">
-              <div class="container-img-wrap">
-                <div class="container-img"></div>
-              </div>
-              <div class="item">
-                <a href="#" class="container-item" data-img="/static/images/bg_img/rule1.png">
-                  <h3>1</h3>
-                </a>
-              </div>
-              <div class="item">
-                <a href="#" class="container-item" data-img="static/images/bg_img/rule2.png">
-                  <h3>2</h3>
-                </a>
-              </div>
-              <div class="item">
-                <a href="#" class="container-item" data-img="{% static 'images/bg_img/rule3.png' %}">
-                  <h3>3</h3>
-                </a>
-              </div>
-              <div class="item">
-                <a href="#" class="container-item" data-img="{% static 'images/bg_img/rule4.png' %}">
-                  <h3>4</h3>
-                </a>
-              </div>
-              <div class="item">
-                <a href="#" class="container-item" data-img="{% static 'images/bg_img/rule5.png' %}">
-                  <h3>5</h3>
-                </a>
-              </div>
-              <div class="item">
-                <a href="#" class="container-item" data-img="{% static 'images/bg_img/rule6.png' %}">
-                  <h3>6</h3>
-                </a>
-              </div>
-              <div class="item">
-                <a href="#" class="container-item" data-img="{% static 'images/bg_img/rule7.png' %}">
-                  <h3>7</h3>
-                </a>
-              </div>
-              <div class="item">
-                <a href="#" class="container-item" data-img="{% static 'images/bg_img/rule8.png' %}">
-                  <h3>8</h3>
-                </a>
-              </div>
-            </div>
+          <div class="service-box">
+            <div class="icon">2</div>
+            <h3 class="rules-title">Designated Captain</h3>
+            <p class="rules-body">
+              Each team must have a designated captain who will be their point
+              of contact with tournament officials.
+            </p>
           </div>
-        </div>
-
-        <div class="bottom-section point-table">
-          <p class="table-heading">POINT TABLE</p>
-          <table>
-            <tbody>
-              <tr>
-                <td>Rank 1</td>
-                <td>10</td>
-                <td>Rank 8</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <td>Rank 2</td>
-                <td>6</td>
-                <td>Rank 9</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>Rank 3</td>
-                <td>5</td>
-                <td>Rank 10</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>Rank 4</td>
-                <td>4</td>
-                <td>Rank 11</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>Rank 5</td>
-                <td>3</td>
-                <td>Rank 12</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>Rank 6</td>
-                <td>2</td>
-                <td>Rank 13</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>Rank 7</td>
-                <td>1</td>
-                <td>Rank 14</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td colspan="3">Kill point</td>
-                <td>1</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="service-box">
+            <div class="icon">3</div>
+            <h3 class="rules-title">Character Clothing</h3>
+            <p class="rules-body">
+              The in-game characters of all players must remain fully clothed
+              after they leave the lobby.
+            </p>
+          </div>
+          <div class="service-box">
+            <div class="icon">4</div>
+            <h3 class="rules-title">Mobile Phones Only</h3>
+            <p class="rules-body">
+              Players are allowed to participate using only handheld mobile
+              phones.
+            </p>
+          </div>
+          <div class="service-box">
+            <div class="icon">5</div>
+            <h3 class="rules-title">No Emulators</h3>
+            <p class="rules-body">
+              No player should use an Emulator like BlueStacks to play on a PC
+              or any other device that is not an Android smartphone.
+            </p>
+          </div>
+          <div class="service-box">
+            <div class="icon">6</div>
+            <h3 class="rules-title">Player Changes</h3>
+            <p class="rules-body">
+              Teams cannot change their players during the competition.
+            </p>
+          </div>
+          <div class="service-box">
+            <div class="icon">7</div>
+            <h3 class="rules-title">Cheating Penalties</h3>
+            <p class="rules-body">
+              If caught or suspected cheating, the team will be eliminated
+              unless they provide hard evidence (video recording).
+            </p>
+          </div>
+          <div class="service-box">
+            <div class="icon">8</div>
+            <h3 class="rules-title">Point System</h3>
+            <p class="rules-body">
+              Winners will be decided according to the point table. Total points
+              = rank points + kill points (1 kill = 1 point).
+            </p>
+          </div>
+          <div class="service-box">
+            <div class="icon">9</div>
+            <h3 class="rules-title">POV Videos</h3>
+            <p class="rules-body">
+              From each team, there should be at least 2 POV videos.
+            </p>
+          </div>
         </div>
       </div>
+
+      <div class="bottom-section point-table">
+        <p class="table-heading">POINT TABLE</p>
+        <table>
+          <tbody>
+            <tr>
+              <td>Rank 1</td>
+              <td>10</td>
+              <td>Rank 8</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>Rank 2</td>
+              <td>6</td>
+              <td>Rank 9</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Rank 3</td>
+              <td>5</td>
+              <td>Rank 10</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Rank 4</td>
+              <td>4</td>
+              <td>Rank 11</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Rank 5</td>
+              <td>3</td>
+              <td>Rank 12</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Rank 6</td>
+              <td>2</td>
+              <td>Rank 13</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Rank 7</td>
+              <td>1</td>
+              <td>Rank 14</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td colspan="3">Kill point</td>
+              <td>1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div></section>
 
       <footer class="footer">
         <div class="footer-container">
@@ -1890,4 +2002,1633 @@ tl.staggerFrom(
     </script>
     <script src="{% static 'js/bgmi_home.js' %}"></script>
   </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HOMEPAGE</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+  <script src="https://unpkg.co/gsap/dist/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+  <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
+  <style>
+:root {
+  --color-menu-overlay: linear-gradient(135deg, #ecf4d6, #c3d692);
+  --color-menu-text: #000;
+  --color-divider: #000000;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+}
+
+/*HOME PAGE CODE*/
+
+.menu-container {
+  z-index: 100;
+  width: 100%;
+  height: 100vh;
+  font-family: "Montagu Slab", serif;
+  background: linear-gradient(300deg, #003c43, #2a645e, #9ad0c2);
+  background-size: 240% 240%;
+  animation: gradient-animation 24s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper-img {
+  position: absolute;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+  width: 50%;
+  height: 150vh;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.box {
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.images {
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.img {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 400px;
+  background: black;
+}
+
+.right {
+  background: url("{% static 'images/bg_img/img3.png' %}") no-repeat 50% 50%;
+  background-size: cover;
+  transform: rotate(5deg) translateX(150px);
+}
+
+.left {
+  background: url("{% static 'images/bg_img/img2.png' %}") no-repeat 50% 50%;
+  background-size: cover;
+  transform: rotate(-5deg) translateX(-150px);
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #003c43;
+  font-family: "Montagu Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 200px;
+}
+
+.title .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+
+@media (max-width: 1200px) {
+  .wrapper-img {
+    width: 60%;
+  }
+
+  .img {
+    width: 250px;
+    height: 350px;
+  }
+
+  .title {
+    font-size: 175px;
+  }
+}
+
+@media (max-width: 992px) {
+  .wrapper-img {
+    width: 70%;
+  }
+
+  .img {
+    width: 200px;
+    height: 300px;
+  }
+
+  .title {
+    font-size: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper-img {
+    width: 80%;
+  }
+
+  .img {
+    width: 180px;
+    height: 250px;
+  }
+
+  .title {
+    font-size: 120px;
+  }
+
+  .left {
+    transform: rotate(-5deg) translateX(50px);
+    visibility: hidden;
+  }
+
+  .right {
+    transform: rotate(5deg) translateX(-50px);
+    visibility: hidden;
+  }
+}
+
+@media (max-width: 576px) {
+  .wrapper-img {
+    width: 90%;
+  }
+
+  .img {
+    width: 150px;
+    height: 200px;
+  }
+
+  .title {
+    font-size: 100px;
+  }
+
+  .left {
+    transform: rotate(-3deg) translateX(20px);
+    visibility: hidden;
+  }
+
+  .right {
+    transform: rotate(3deg) translateX(-20px);
+    visibility: hidden;
+  }
+}
+
+@media (max-width: 400px) {
+  .wrapper-img {
+    width: 95%;
+  }
+
+  .img {
+    width: 130px;
+    height: 180px;
+  }
+
+  .title {
+    font-size: 80px;
+  }
+
+  .left {
+    transform: rotate(-2deg) translateX(10px);
+    visibility: hidden;
+  }
+
+  .right {
+    transform: rotate(2deg) translateX(-10px);
+    visibility: hidden;
+  }
+}
+
+/*HOMEPAGE END*/
+
+/* NAV MENU CODE */
+
+/* Navigation menu styles */
+nav {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em;
+  color: #fff;
+  z-index: 1111;
+}
+
+.logo,
+.menu-close-btn,
+.menu-logo {
+  font-size: 20px;
+}
+
+.menu-close-btn,
+.menu-logo {
+  padding: 25px;
+}
+
+.menu-open-btn {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.menu-overlay {
+  width: 100%;
+  background: var(--color-menu-overlay);
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  z-index: 100;
+  transition: clip-path 1s ease;
+}
+
+.menu-overlay.active {
+  pointer-events: all;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.menu-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-close-btn {
+  cursor: pointer;
+}
+
+.menu-cols {
+  display: flex;
+}
+
+.menu-cols > div {
+  flex: 1;
+}
+
+.menu-link {
+  position: relative;
+  width: max-content;
+}
+
+.menu-link a {
+  text-decoration: none;
+  color: var(--color-menu-text);
+  font-size: 40px;
+}
+
+.menu-link:after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-menu-text);
+  transition: 0.3s all;
+}
+
+.menu-link:hover .menu-link:after {
+  width: 100%;
+}
+
+.btn {
+  margin: 2em 0;
+  border: 1px solid var(--color-menu-text);
+  width: max-content;
+  padding: 1em 2em;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  color: #000;
+  font-size: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: var(--color-menu-text);
+  transition: 0.3s all;
+  z-index: -1;
+}
+
+.btn:hover.menu-link {
+  color: var(--color-menu-overlay);
+}
+
+.btn:hover.btn:before {
+  width: 100%;
+}
+
+.menu-footer {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-menu-text);
+}
+
+.menu-divider {
+  width: 0%;
+  height: 1px;
+  background: var(--color-divider);
+  margin: 2px;
+}
+
+.slogan {
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.video-preview {
+  width: 50%;
+  height: 0;
+  background: url("{% static 'images/bg_img/preview.png' %}") no-repeat 50% 50%;
+  background-size: cover;
+  border-radius: 4px;
+  margin: 0 auto;
+}
+
+.video-details {
+  width: 50%;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  padding: 0.5em 0;
+  color: var(--color-menu-text);
+}
+
+nav {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  color: #fff;
+  z-index: 10;
+}
+
+.logo,
+.menu-close-btn,
+.menu-logo {
+  font-size: 20px;
+}
+
+.menu-close-btn,
+.menu-logo {
+  padding: 25px;
+}
+
+.menu-open-btn {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.menu-overlay {
+  width: 100%;
+  background: var(--color-menu-overlay);
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  z-index: 100;
+  transition: clip-path 1s ease;
+}
+
+.menu-overlay.active {
+  pointer-events: all;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.menu-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-close-btn {
+  cursor: pointer;
+}
+
+.menu-cols {
+  display: flex;
+}
+
+.menu-cols > div {
+  flex: 1;
+  padding: 1em 0;
+}
+
+.menu-link {
+  margin: 1em 0;
+  position: relative;
+  width: max-content;
+}
+
+.menu-link a {
+  text-decoration: none;
+  color: var(--color-menu-text);
+  font-size: 40px;
+}
+
+.menu-link:after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-menu-text);
+  transition: 0.3s all;
+}
+
+.menu-link:hover .menu-link:after {
+  width: 100%;
+}
+
+.btn {
+  margin: 2em 0;
+  border: 1px solid var(--color-menu-text);
+  width: max-content;
+  padding: 1em 2em;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  color: #000;
+  font-size: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: var(--color-menu-text);
+  transition: 0.3s all;
+  z-index: -1;
+}
+
+.btn:hover.menu-link {
+  color: var(--color-menu-overlay);
+}
+
+.btn:hover.btn:before {
+  width: 100%;
+}
+
+.menu-footer {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-menu-text);
+}
+
+.menu-divider {
+  width: 0%;
+  height: 1px;
+  background: var(--color-divider);
+}
+
+.slogan {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.video-preview {
+  width: 70%;
+  height: 0;
+  background: url("{% static 'images/bg_img/preview.png' %}") no-repeat 50% 50%;
+  background-size: cover;
+  border-radius: 4px;
+  margin: 0 auto;
+}
+
+.video-details {
+  width: 70%;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  padding: 0.5em 0;
+  color: var(--color-menu-text);
+}
+
+@media (max-width: 900px) {
+  .menu-overlay {
+    height: 100vh;
+  }
+
+  .menu-cols {
+    display: block;
+  }
+
+  .video-preview {
+    height: 125px;
+  }
+
+  .menu-link {
+    font-size: 30px;
+  }
+}
+
+/*MENU CODE ENDDDD*/
+
+/*CAROUSEL CODE*/
+
+.carousel,
+.about {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.about {
+  font-family: "Montserrat", sans-serif;
+  margin-top: 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+.carousel {
+  height: 100vh;
+  width: 100%;
+  background: url("{% static 'images/bg_img/vikendi.png' %}") no-repeat center center/cover;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.img-slider {
+  transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.img-box {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1600px;
+  width: 1600px;
+  bottom: -960px;
+}
+
+.img-box .img-list {
+  height: inherit;
+  transform: rotate(90deg);
+}
+
+.img-list .img-slider {
+  height: inherit;
+  display: flex;
+  align-items: center;
+  transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.img-slider .img-item {
+  position: absolute;
+  left: 0;
+  transform: rotate(calc(360deg / 4 * var(--i)));
+  transform-origin: 800px;
+  transition: transform 0.5s ease;
+}
+
+.img-item img {
+  transform: rotate(-90deg);
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.1));
+}
+
+.img-item.fruit img {
+  transform: rotate(-90deg) translateY(-30%);
+  scale: 0;
+  transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+  animation: float-fruit 10s ease-in-out infinite;
+}
+
+.img-item.fruit.active img {
+  scale: 1;
+  transition-delay: 0.1s;
+}
+
+@keyframes float-fruit {
+  0% {
+    translate: 0;
+  }
+  50% {
+    translate: -20%;
+  }
+  100% {
+    translate: 0;
+  }
+}
+
+.img-item.active img {
+  scale: 1;
+  transition: transform 0.5s ease;
+}
+
+.navigation {
+  position: absolute;
+  left: 50%;
+  top: 150%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 7;
+}
+
+.navigation span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 65px;
+  height: 65px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  font-size: 55px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.navigation span:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.info-slider {
+  position: relative;
+  transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.info-item {
+  display: none;
+  color: #fff;
+  transition: display 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.info-item.active {
+  display: flex;
+}
+
+.info-box {
+  font-family: "Montagu Slab", serif;
+  font-weight: 600;
+  position: absolute;
+  right: 8%;
+  bottom: 5%;
+  top: 170vh;
+  width: 350px;
+  height: 175px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  text-align: center;
+  z-index: 4;
+}
+
+.info-slider .info-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #ffffff;
+  height: 150px;
+}
+
+.info-item h2 {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.info-box .info-slider {
+  transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.bg-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bg-box .bg {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.bg-box .bg.active {
+  opacity: 1;
+}
+
+.bg-box .bg::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  filter: blur(200px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bg-box .bg:nth-child(1) {
+  background: url("{% static 'images/bg_img/erangel.png' %}") no-repeat center center/cover;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+.bg-box .bg:nth-child(2) {
+  background: url("{% static 'images/bg_img/miramar.png' %}") no-repeat center center/cover;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+.bg-box .bg:nth-child(3) {
+  background: url("{% static 'images/bg_img/sanhok.png' %}") no-repeat center center/cover;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+.bg-box .bg:nth-child(4) {
+  background: url("{% static 'images/bg_img/vikendi.png' %}") no-repeat center center/cover;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+/* CAROUSEL END*/
+
+/*BGMI RULEBOOK*/
+
+section {
+  background: linear-gradient(300deg, #003c43, #2a645e, #9ad0c2);
+  background-size: 240% 240%;
+  animation: gradient-animation 24s ease infinite;
+  font-family: "Times New Roman", Times, serif;
+  height: 270vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.wrapper {
+  font-family: "Times New Roman", Times, serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1000px;
+  margin: 40px auto;
+}
+
+.rules-header {
+  text-align: center;
+  font-size: 50px;
+  font-weight: 500;
+  color: #e9f7f3;
+  margin-bottom: 30px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin: 0 20px;
+}
+
+.service-box {
+  background: linear-gradient(135deg, #d4ebe3, #bbdbd0, #a5cdbf, #8abcaa);
+  padding: 15px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-height: 180px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(241, 250, 218, 0.4);
+}
+
+.icon {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #003c43;
+  margin-bottom: 10px;
+}
+
+.service-box h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.service-box p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*point table*/
+.point-table {
+  display: flex;
+  justify-content: center;
+  font-family: "Times New Roman", Times, serif;
+  align-items: center;
+  height: 100vh;
+  margin-top: 50px;
+  margin: 0;
+  overflow: hidden;
+  color: #ffffff;
+  flex-direction: column;
+}
+
+.table-heading {
+  font-size: 50px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0 auto;
+  color: #e9f7f3;
+}
+
+/* Table styling */
+table {
+  border-collapse: separate;
+  width: 65%;
+  margin: 20px;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+  padding: 10px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0px 0px 25px rgba(95, 166, 155, 0.8),
+    0px 4px 25px rgba(95, 166, 155, 0.8); /* Greenish teal glow */
+}
+
+/* Neon gradient glow behind the table */
+table::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(120deg, #005f5b, #5fa69b, #aee4d8);
+  background-size: 300% 300%;
+  border-radius: 15px;
+  z-index: -1;
+  filter: blur(20px);
+  opacity: 0.7;
+  animation: neonFlow 10s infinite alternate ease-in-out;
+}
+
+/* Neon glowing animation */
+@keyframes neonFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+th,
+td {
+  padding: 15px 20px;
+  text-align: center;
+  font-size: 18px;
+  border: none;
+  color: #aee4d8;
+  text-shadow: 0 0 5px #9fd0c6, 0 0 10px #aee4d8;
+}
+
+tbody tr {
+  background-color: rgba(0, 95, 91, 0.3);
+  transition: background-color 0.3s ease;
+  border-radius: 10px;
+}
+
+tbody tr:nth-child(even) {
+  background-color: rgba(95, 166, 155, 0.5);
+}
+
+tbody tr:hover {
+  background-color: rgba(174, 228, 216, 0.7);
+}
+
+/* Last row style */
+table tr:last-child td {
+  background: linear-gradient(90deg, #aee4d8, #5fa69b);
+  color: #ffffff;
+  font-weight: bold;
+  text-shadow: 0 0 10px #005f5b, 0 0 15px #005f5b;
+}
+
+@media screen and (max-width: 768px) {
+  table {
+    width: 90%;
+  }
+  td,
+  th {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  table {
+    width: 100%;
+    font-size: 12px;
+    overflow-x: auto;
+  }
+  td,
+  th {
+    padding: 8px;
+    font-size: 12px;
+  }
+}
+
+/*RULEBOOK END*/
+
+/* FOOTER*/
+footer {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #29635d;
+  background: #abdccc;
+  border-radius: 50px 0 0 0;
+}
+footer ul {
+  list-style: none;
+}
+footer p {
+  color: #29635d;
+  max-width: 25em;
+  font-size: 0.9em;
+  line-height: 23px;
+}
+footer a {
+  color: #29635d;
+  text-decoration: none;
+}
+footer .footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2em;
+}
+.footer .footer-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2em;
+}
+.brand {
+  display: block;
+  font-size: 1.8em;
+  font-weight: 600;
+  margin-bottom: 1em;
+}
+.media-icons li,
+.services-icons li {
+  display: inline-block;
+  margin: 0.5em 0.5em 0.5em 0;
+}
+.media-icons a {
+  font-size: 1.1em;
+  width: 2em;
+  height: 2em;
+  border: 1px #29635d solid;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+.media-icons a:hover {
+  background: #29635d;
+  color: #111;
+}
+.services-icons a {
+  font-size: 1.6em;
+}
+.services-icons a:hover {
+  color: #669e94;
+}
+.footer-bottom {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #0f6468b3;
+  padding: 2em;
+}
+.footer .footer-menu {
+  margin-bottom: 1em;
+}
+.footer .footer-menu li {
+  display: inline-block;
+  margin: 0 0.7em 0.7em 0;
+  text-align: center;
+}
+.footer .footer-menu a {
+  transition: 0.3s;
+  font-weight: 600;
+}
+.footer .footer-menu a:hover {
+  color: #669e94;
+}
+.input-wrap {
+  margin: 1em 0;
+  display: flex;
+}
+.input-wrap input {
+  padding: 0.5em;
+  border: none;
+  background: #20232a;
+  color: #29635d;
+}
+.input-wrap input:focus {
+  outline: none;
+}
+.input-wrap a {
+  padding: 0.8em;
+  background: #8ac1b4;
+  border: none;
+  color: #0a4649;
+  transition: 0.3s;
+}
+.input-wrap button:hover {
+  background: #29635d;
+  color: #111;
+}
+
+@media screen and (max-width: 900px) {
+  .footer .container {
+    flex-direction: column;
+  }
+}
+
+section {
+  background: linear-gradient(300deg, #003c43, #2a645e, #9ad0c2);
+  background-size: 240% 240%;
+  animation: gradient-animation 24s ease infinite;
+  font-family: "Times New Roman", Times, serif;
+  height: 270vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.wrapper {
+  font-family: "Times New Roman", Times, serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1000px;
+  margin: 40px auto;
+}
+
+.rules-header {
+  text-align: center;
+  font-size: 50px;
+  font-weight: 500;
+  color: #e9f7f3;
+  margin-bottom: 30px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin: 0 20px;
+}
+
+.service-box {
+  background: linear-gradient(135deg, #d4ebe3, #bbdbd0, #a5cdbf, #8abcaa);
+  padding: 15px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-height: 180px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(241, 250, 218, 0.4);
+}
+
+.icon {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #003c43;
+  margin-bottom: 10px;
+}
+
+.service-box h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.service-box p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+  </style>
+</head>
+
+<body>
+  <div class="menu-container">
+    <nav>
+      <div class="logo"><a href="/" style="color: white;">Bits&Bytes</a></div>
+      <div class="menu-open-btn">Menu</div>
+    </nav>
+
+    <div class="menu-overlay">
+      <div class="menu-nav">
+        <div class="menu-logo">Bits&Bytes</div>
+        <div class="menu-close-btn">Close</div>
+      </div>
+      <div class="menu-cols">
+        <div class="col">
+          <div class="video">
+            <div class="video-preview"></div>
+            <div class="video-details">
+              <p>
+                <i class="ph-fill ph-play-circle" id="play"></i>Play video
+              </p>
+              <p>-01:18</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="menu-link">
+            <a href="{% url 'bgmi_home' %}">Home</a>
+          </div>
+          <div class="menu-link">
+            <a href="#carousel">Event Details</a>
+          </div>
+          <div class="menu-link">
+            <a href="#rules">Rulebook</a>
+          </div>
+          <div class="menu-link">
+            <a href="{% url 'scoreboard2' %}">Scoreboard</a>
+          </div>
+          <div class="btn">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdaM7tLjTu_iGrMf7LqGTJOi0BybPty2eST6b6pzI0fupL3KQ/viewform" target="_blank" style="color: white;">Register</a>
+          </div>
+        </div>
+      </div>
+      <div class="menu-footer">
+        <div class="menu-divider"></div>
+        <div class="menu-footer-copy">
+          <div class="slogan">
+            <p>Conquer the Battlegrounds, Dominate the victory!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="images">
+    <div class="left img"></div>
+    <div class="right img"></div>
+  </div>
+  <div class="hero-image">
+    <div class="wrapper-img">
+      <div class="box"></div>
+      <div>
+        <img class="image" src="{% static 'images/bg_img/img1.png' %}" />
+      </div>
+    </div>
+  </div>
+  <div>
+    <p class="title">BGMI</p>
+  </div>
+
+  <div class="about">
+    <div class="carousel" id="carousel">
+      <div class="bg-box">
+        <div class="bg"></div>
+        <div class="bg"></div>
+        <div class="bg"></div>
+        <div class="bg"></div>
+      </div>
+      <div class="img-box">
+        <div class="img-list">
+          <div class="img-slider">
+            <div class="img-item fruit active" style="--i: 0">
+              <img src="{% static 'images/bg_img/bg1.png' %}" />
+            </div>
+            <div class="img-item fruit" style="--i: 1">
+              <img src="{% static 'images/bg_img/bg2.png' %}" />
+            </div>
+            <div class="img-item fruit" style="--i: 2">
+              <img src="{% static 'images/bg_img/bg3.png' %}" />
+            </div>
+            <div class="img-item fruit" style="--i: 3">
+              <img src="{% static 'images/bg_img/bg4.png' %}" />
+            </div>
+            <div class="img-item" style="--i: 0">
+              <img src="{% static 'images/bg_img/char1.png' %}" />
+            </div>
+            <div class="img-item" style="--i: 1">
+              <img src="{% static 'images/bg_img/char2.png' %}" />
+            </div>
+            <div class="img-item" style="--i: 2">
+              <img src="{% static 'images/bg_img/char3.png' %}" />
+            </div>
+            <div class="img-item" style="--i: 3">
+              <img src="{% static 'images/bg_img/char4.png' %}" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="info-box">
+    <strong>
+      <div class="info-slider">
+        <div class="info-item">
+          <h2>EVENT DETAILS</h2>
+          <p>
+            Event Dates: 26th and 27th September, 2023.<br />
+            Event location: Online<br />
+            Event Timings: To be declared <br />
+            Registrations now open!!<br />
+          </p>
+        </div>
+        <div class="info-item">
+          <h2>PRIZE POOL</h2>
+          <p>
+            Total Prize Pool Worth: ₹8000
+            <br />
+            First Prize Winner Squad: ₹5000
+            <br />
+            Second Prize Winner Squad: ₹3000
+            <br />
+          </p>
+        </div>
+        <div class="info-item">
+          <h2>REGISTRATION FEES</h2>
+          <p>
+            Solo Entry Fees: ₹100
+            <br />
+            Squad Registration Fees: ₹300 per Team
+            <br />
+            A squad shall consist have a maximum of four team members.
+          </p>
+        </div>
+        <div class="info-item">
+          <h2>CONTACTS</h2>
+          <p>
+            For more information, reach out to: <br />
+            Event Coordinators: <br />
+            Abhijit Gaikwad: +91 93227 44472 <br />
+            Soham Harkare: +91 72083 43204
+          </p>
+        </div>
+      </div>
+    </strong>
+  </div>
+
+  <div class="navigation">
+    <span class="prev-btn">
+      <i class="bx bx-chevron-left"></i>
+    </span>
+    <span class="next-btn">
+      <i class="bx bx-chevron-right"></i>
+    </span>
+  </div>
+
+  
+  
+  <section id="rules">
+    <div class="wrapper">
+      <h1 class="rules-header">Battlefield Arena Rules</h1>
+      <div class="services-grid">
+        <div class="service-box">
+          <div class="icon">1</div>
+          <h3 class="rules-title">Team Members</h3>
+          <p class="rules-body">
+            Each team should have 4 members at all times during the
+            competition.
+          </p>
+        </div>
+        <div class="service-box">
+          <div class="icon">2</div>
+          <h3 class="rules-title">Designated Captain</h3>
+          <p class="rules-body">
+            Each team must have a designated captain who will be their point
+            of contact with tournament officials.
+          </p>
+        </div>
+        <div class="service-box">
+          <div class="icon">3</div>
+          <h3 class="rules-title">Character Clothing</h3>
+          <p class="rules-body">
+            The in-game characters of all players must remain fully clothed
+            after they leave the lobby.
+          </p>
+        </div>
+        <div class="service-box">
+          <div class="icon">4</div>
+          <h3 class="rules-title">Mobile Phones Only</h3>
+          <p class="rules-body">
+            Players are allowed to participate using only handheld mobile
+            phones.
+          </p>
+        </div>
+        <div class="service-box">
+          <div class="icon">5</div>
+          <h3 class="rules-title">No Emulators</h3>
+          <p class="rules-body">
+            No player should use an Emulator like BlueStacks to play on a PC
+            or any other device that is not an Android smartphone.
+          </p>
+        </div>
+        <div class="service-box">
+          <div class="icon">6</div>
+          <h3 class="rules-title">Player Changes</h3>
+          <p class="rules-body">
+            Teams cannot change their players during the competition.
+          </p>
+        </div>
+        <div class="service-box">
+          <div class="icon">7</div>
+          <h3 class="rules-title">Cheating Penalties</h3>
+          <p class="rules-body">
+            If caught or suspected cheating, the team will be eliminated
+            unless they provide hard evidence (video recording).
+          </p>
+        </div>
+        <div class="service-box">
+          <div class="icon">8</div>
+          <h3 class="rules-title">Point System</h3>
+          <p class="rules-body">
+            Winners will be decided according to the point table. Total points
+            = rank points + kill points (1 kill = 1 point).
+          </p>
+        </div>
+        <div class="service-box">
+          <div class="icon">9</div>
+          <h3 class="rules-title">POV Videos</h3>
+          <p class="rules-body">
+            From each team, there should be at least 2 POV videos.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-section point-table">
+      <p class="table-heading">POINT TABLE</p>
+      <table>
+        <tbody>
+          <tr>
+            <td>Rank 1</td>
+            <td>10</td>
+            <td>Rank 8</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>Rank 2</td>
+            <td>6</td>
+            <td>Rank 9</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>Rank 3</td>
+            <td>5</td>
+            <td>Rank 10</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>Rank 4</td>
+            <td>4</td>
+            <td>Rank 11</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>Rank 5</td>
+            <td>3</td>
+            <td>Rank 12</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>Rank 6</td>
+            <td>2</td>
+            <td>Rank 13</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>Rank 7</td>
+            <td>1</td>
+            <td>Rank 14</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td colspan="3">Kill point</td>
+            <td>1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+  <script src="{% static 'js/bgmi_home.js' %}"></script>
+</body>
+<footer class="footer">
+  <div class="footer-container">
+    <div class="col1">
+      <a href="#" class="brand" target="_black"></a>
+      <ul class="media-icons">
+        <li>
+          <a href="https://www.instagram.com/aissms_coe/?hl=en" target="_black"><i
+              class="fa-brands fa-instagram"></i></a>
+        </li>
+        <li>
+          <a href="https://in.linkedin.com/school/aissms-coe/" target="_black"><i
+              class="fa-brands fa-linkedin"></i></a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@aissmscollegeofengineering2566" target="_black"><i
+              class="fa-brands fa-youtube"></i></a>
+        </li>
+      </ul>
+    </div>
+    <div class="col2">
+      <ul class="footer-menu">
+        <li><a href="#" target="_black">Home</a></li>
+        <li><a href="#" target="_black">VR</a></li>
+        <li><a href="#" target="_black">BGMI</a></li>
+        <li><a href="#" target="_black">TREASURE HUNT</a></li>
+        <li>
+          <a href="https://aissmscoe.com/" target="_black">AISSMS COE</a>
+        </li>
+        <p>
+          <br />
+          Address: No. 1, Kennedy Road, Near RTO Office Sangamvadi,
+          Shivajinagar, Pune, Maharashtra 411001
+        </p>
+      </ul>
+    </div>
+    <div class="col3">
+      <p>Registrations now open!</p>
+      <form>
+        <div class="input-wrap">
+          <a class="fa-solid fa-paper-plane" href="https://aissmscoe.akronsystems.com/CoeWorkShop.aspx"
+            id="clg-form" target="_black"></a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="mekk">
+      <p>@Bits&Bytes 2024 - All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
 </html>
