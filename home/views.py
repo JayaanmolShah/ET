@@ -20,6 +20,12 @@ def th_home(request):
 def scoreboard(request,game):
     if game=='vr':
         players = vr_Players.objects.all().order_by('-Score')
+    elif game=='pirate':
+        players = vr_Players.objects.filter(Game='Pirate').order_by('-Score')
+        # players = th_Players.objects.all().order_by('-Score')
+    elif game=='roller':
+        players = vr_Players.objects.filter(Game='Roller').order_by('-Score')
+        # players = th_Players.objects.all().order_by('-Score')
     elif game=='th':
         players = th_Players.objects.all().order_by('-Score')
     
