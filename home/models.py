@@ -11,7 +11,7 @@ from django.db import models
 
 class bgmi_Players(models.Model):
     Rank=models.IntegerField(null=True)
-    Team Name = models.CharField(max_length=50,null=True)
+    Team_Name = models.CharField(max_length=50,null=True)
     Avatar = models.ImageField(blank=True, null=True)
     KP=models.IntegerField(null=True)
     PP=models.IntegerField(null=True)
