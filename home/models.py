@@ -10,14 +10,13 @@ from django.db import models
 
 
 class bgmi_Players(models.Model):
-    Name = models.CharField(max_length=50,null=True)
     Rank=models.IntegerField(null=True)
-    Avatar = models.ImageField(upload_to='D:\websocket\ET\ETweb\media\\bgmi', blank=True, null=True)
-    Date = models.DateField(auto_now=True)
-    Time = models.TimeField(auto_now=True)
-    FP=models.IntegerField(null=True)
+    Team Name = models.CharField(max_length=50,null=True)
+    Avatar = models.ImageField(blank=True, null=True)
+    KP=models.IntegerField(null=True)
     PP=models.IntegerField(null=True)
     TP=models.IntegerField(null=True)
+    game=models.CharField(max_length=50,null=True)
     def __str__(self):
         return f"{self.Name}"
     
