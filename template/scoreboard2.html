@@ -221,18 +221,18 @@
                 <th>Rank</th>
                 <th>Avatar</th>
                 <th>Team Name</th>
-                <th>KP</th>
+                <th>FP</th>
                 <th>PP</th>
                 <th>TP</th>
             </tr>
         </thead>
         <tbody>
-            {% for player in players %}
+            {% for player in players|slice:"3:" %}
             <tr>
                 <td>{{ player.Rank }}</td>
                 <td><img src="{{ player.Avatar}}" alt="{{ player.Name }}" width="50" height="50"></td>
-                <td>{{ player.Team_Name }}</td>
-                <td>{{ player.KP }}</td>
+                <td>{{ player.Name }}</td>
+                <td>{{ player.FP }}</td>
                 <td>{{ player.PP }}</td>
                 <td>{{ player.TP }}</td>
             </tr>

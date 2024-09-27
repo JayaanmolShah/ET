@@ -26,6 +26,8 @@ def scoreboard(request,game):
     elif game=='roller':
         players = vr_Players.objects.filter(Game='Roller').order_by('-Score')
         # players = th_Players.objects.all().order_by('-Score')
+    elif game=='pistol':
+        players = vr_Players.objects.filter(Game='Pistol').order_by('-Score')
     elif game=='th':
         players = th_Players.objects.all().order_by('-Score')
     
